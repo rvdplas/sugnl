@@ -1,7 +1,7 @@
 import Parser from "rss-parser";
 import { BlogPost, BlogSource } from "@/types";
 
-const ONE_DAY_SECONDS = 60 * 60 * 24;
+const REVALIDATE_AFTER_ONE_DAY_SECONDS = 60 * 60 * 24;
 
 const parser = new Parser();
 
@@ -61,7 +61,7 @@ function normalizeDate(value: string | undefined): string {
 
 async function loadRssSource(source: BlogSource): Promise<BlogPost[]> {
   const response = await fetch(source.feedUrl, {
-    next: { revalidate: ONE_DAY_SECONDS, tags: [`blog-feed:${source.id}`] },
+    next: { revalidate: REVALIDATE_AFTER_ONE_DAY_SECONDS, tags: [`blog-feed:${source.id}`] },
   });
 
   if (!response.ok) {

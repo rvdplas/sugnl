@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import MarkdownContent from "@/components/MarkdownContent";
 import RegisterNowSection from "@/components/RegisterNowSection";
+import NewsletterSignupForm from "@/components/NewsletterSignupForm";
 
 export default async function Home() {
   const upcomingEvents = getUpcomingEvents();
@@ -153,6 +154,8 @@ export default async function Home() {
           View Past events →
         </Link>
       </section>
+
+      <NewsletterSignupForm />
     </div>
   );
 }

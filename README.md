@@ -155,11 +155,18 @@ vercel
 
 ### Environment Variables
 
-No environment variables required for basic functionality. For production, you may want to add:
+No environment variables are required for basic functionality. For production, you may want to add:
 
 - Database connection strings
-- Email service API keys (for RSVP confirmations)
+- Email service API keys (for RSVP confirmations/newsletter)
 - Analytics tracking IDs
+
+Newsletter sign-up can integrate with Brevo using:
+
+- `BREVO_API_KEY`
+- `BREVO_LIST_ID`
+
+If Brevo env vars are not configured, the newsletter API will accept sign-ups without sending them to an external provider.
 
 ## Cost Optimization
 
