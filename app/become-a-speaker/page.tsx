@@ -1,17 +1,16 @@
 import Link from "next/link";
 import SpeakerSignupForm from "@/components/SpeakerSignupForm";
+import PageIntro from "@/components/PageIntro";
+import PageContainer from "@/components/PageContainer";
 
 export default function BecomeSpeakerPage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12">
-      <header className="mb-8 text-center">
-        <h1 className="mb-3 text-4xl font-black [font-family:var(--font-heading)] md:text-5xl">
-          Speak at SUGNL
-        </h1>
-        <p className="mx-auto max-w-2xl text-lg text-[color:var(--muted)]">
-          SUGNL is a community stage for people who want to share practical, innovative, and sometimes slightly wild ideas with fellow Sitecore professionals. If you have a story, experiment, lesson learned, or fresh perspective that could help the community, we want to hear it.
-        </p>
-      </header>
+    <PageContainer>
+      <PageIntro
+        title="Speak at SUGNL"
+        description="SUGNL is a community stage for people who want to share practical, innovative, and sometimes slightly wild ideas with fellow Sitecore professionals. If you have a story, experiment, lesson learned, or fresh perspective that could help the community, we want to hear it."
+        sectionClassName="mb-8"
+      />
 
       <div className="surface-card space-y-6 p-6 text-[color:var(--ink)] md:p-8">
         <p>
@@ -37,6 +36,6 @@ export default function BecomeSpeakerPage() {
       </div>
 
       {/* <SpeakerSignupForm /> */}
-    </div>
+    </PageContainer>
   );
 }

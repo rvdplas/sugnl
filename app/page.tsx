@@ -1,161 +1,162 @@
-import { getUpcomingEvents, getEventAgenda } from "@/lib/events";
 import Link from "next/link";
-import Image from "next/image";
-import MarkdownContent from "@/components/MarkdownContent";
-import RegisterNowSection from "@/components/RegisterNowSection";
-import NewsletterSignupForm from "@/components/NewsletterSignupForm";
+import { getLatestBlogPosts } from "@/lib/blogFeeds";
+import { getUpcomingEvents } from "@/lib/events";
+import PageIntro from "@/components/PageIntro";
+import PageContainer from "@/components/PageContainer";
+import { featureFlags } from "@/lib/featureFlags";
+
+function formatEventDate(date: string): string {
+  return new Date(date).toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
 
 export default async function Home() {
-  const upcomingEvents = getUpcomingEvents();
-  const event = upcomingEvents[0];
-  const agenda = event ? getEventAgenda(event) : [];
+  const communityPosts = await getLatestBlogPosts(3);
+  const nextEvent = getUpcomingEvents()[0];
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12">
-      <section className="mb-12">
-        <div className="text-center">
-          <h1 className="mb-4 text-4xl font-black [font-family:var(--font-heading)] md:text-5xl">
-            Welcome to SUGNL
-          </h1>
-          <p className="mx-auto max-w-2xl text-lg text-[color:var(--muted)]">
-            We organize three community events per year to bring together developers, architects, and tech enthusiasts. 
-            Join us for evenings of knowledge sharing, networking, and exploring the latest technologies.
-          </p>
-        </div>
-      </section>
-
-      {event ? (
-        <>
-          {/* <div className="mb-8 rounded-2xl border border-[color:var(--focus-ring)] bg-[color:var(--surface-soft)] px-5 py-4 md:px-6">
-            <h2 className="mb-4 text-2xl font-black [font-family:var(--font-heading)] text-[color:var(--accent)]">Important for this event</h2>
-            <p className="mt-1 text-base text-[color:var(--ink)] md:text-lg">
-              Sebastian&apos;s workshop will be an interactive session. Please bring your laptop so you can follow along and participate.
-            </p>
-          </div> */}
-
-          <div className="surface-card mb-8 p-6 md:p-8">
-            <div className="mb-4 flex items-center gap-3">
-              <h2 className="text-4xl font-black [font-family:var(--font-heading)]">{event.title}</h2>
-              <span className="pill bg-[color:var(--pill-upcoming-bg)] text-[color:var(--accent-ink)]">
-                Upcoming
-              </span>
-            </div>
-
-            <div className="mb-6 grid gap-2 text-[color:var(--muted)] md:grid-cols-2">
-              <p className="text-lg md:col-span-2">
-                📅{" "}
-                {new Date(event.date).toLocaleDateString("en-US", {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </p>
-              <p className="text-lg">🕐 {event.startTime} - {event.endTime}</p>
-              <p className="text-lg">📍 {event.location}</p>
-            </div>
-
-            <MarkdownContent content={event.description} className="text-[color:var(--ink)]" />
-          </div>
-
-          <div className="surface-card mb-12 p-6 md:p-8">
-            <h2 className="mb-4 text-2xl font-black [font-family:var(--font-heading)]">Event Agenda</h2>
-            <div className="space-y-3 text-[color:var(--muted)]">
-              {agenda.map((agendaItem, index) => (
-                <div key={`${agendaItem.type}-${index}`} className="rounded-xl border border-[color:var(--line)] bg-[color:var(--surface)] p-4">
-                  {agendaItem.type === "fixed" || agendaItem.activity.type === "break" || agendaItem.activity.type === "info" ? (
-                    <div className="space-y-2">
-                      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                        <span className="text-sm font-semibold text-[color:var(--ink)]">
-                          {agendaItem.type === "fixed" ? agendaItem.startTime : agendaItem.activity.startTime}
-                        </span>
-                        <span className="text-lg font-semibold text-[color:var(--ink)]">
-                          {agendaItem.type === "fixed" ? agendaItem.label : agendaItem.activity.subject}
-                        </span>
-                      </div>
-                      
-                      {agendaItem.type === "activity" && agendaItem.activity.description && (
-                        <MarkdownContent
-                          content={agendaItem.activity.description}
-                          className="text-sm leading-relaxed"
-                        />
-                      )}
-                    </div>
-                  ) : (
-                    <div className="space-y-4">
-                      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                        <span className="text-sm font-semibold text-[color:var(--ink)]">
-                          {agendaItem.activity.startTime}
-                        </span>
-                        <h3 className="text-lg font-semibold text-[color:var(--ink)]">{agendaItem.activity.subject}</h3>
-                      </div>
-                      <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-                        <div className="flex-shrink-0 self-start">
-                          {agendaItem.activity.speaker?.image ? (
-                            <Image
-                              src={agendaItem.activity.speaker.image}
-                              alt={agendaItem.activity.speaker.name}
-                              width={80}
-                              height={80}
-                              loading="lazy"
-                              decoding="async"
-                              className="h-20 w-20 rounded-full object-cover"
-                            />
-                          ) : (
-                            <div className="h-20 w-20 rounded-full bg-transparent" aria-hidden="true" />
-                          )}
-                        </div>
-                        <div className="min-w-0 flex-1 space-y-2">
-                          {agendaItem.activity.speaker?.name && (
-                            <div>
-                              <p className="text-sm font-semibold text-[color:var(--ink)]">
-                                {agendaItem.activity.speaker.name}
-                              </p>
-                              {agendaItem.activity.speaker.linkedin && (
-                                <a
-                                  href={agendaItem.activity.speaker.linkedin}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-xs text-[color:var(--link)] hover:underline"
-                                >
-                                  View LinkedIn Profile →
-                                </a>
-                              )}
-                            </div>
-                          )}
-                          {agendaItem.activity.description && (
-                            <MarkdownContent
-                              content={agendaItem.activity.description}
-                              className="text-sm leading-relaxed"
-                            />
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <RegisterNowSection event={event} />
-        </>
-      ) : (
-        <p className="py-12 text-center text-[color:var(--muted)]">
-          No upcoming events scheduled. Check back soon!
+    <PageContainer>
+      <PageIntro
+        title="Welcome to SUGNL"
+        description="We organize three community events per year to bring together developers, architects, and tech enthusiasts. Join us for evenings of knowledge sharing, networking, and exploring the latest technologies."
+      />
+      
+      <section className="surface-card mb-12 p-6 md:p-8">
+        <p className="mb-2 text-sm font-semibold uppercase tracking-[0.15em] text-[color:var(--muted)]">
+          Upcoming Event
         </p>
-      )}
-
-      <section className="mt-4 text-center">
-        <Link
-          href="/past-events"
-          className="inline-block rounded-full border border-[color:var(--nav-line)] bg-[color:var(--button-primary)] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[color:var(--button-primary-hover)]"
-        >
-          View Past events →
-        </Link>
+        {nextEvent ? (
+          <>
+            <h2 className="mb-3 text-3xl font-black [font-family:var(--font-heading)] md:text-4xl">
+              {nextEvent.title}
+            </h2>
+            <p className="mb-1 text-sm text-[color:var(--muted)] md:text-base">
+              {formatEventDate(nextEvent.date)}
+            </p>
+            <p className="mb-1 text-sm text-[color:var(--muted)] md:text-base">
+              {nextEvent.startTime} - {nextEvent.endTime}
+            </p>
+            <p className="mb-5 text-sm text-[color:var(--muted)] md:text-base">
+              {nextEvent.location}
+            </p>
+            <p className="mb-6 max-w-2xl text-[color:var(--muted)] md:text-lg">
+              {nextEvent.description}
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href={`/event/${nextEvent.id}`}
+                className="inline-block rounded-full border border-[color:var(--nav-line)] bg-[color:var(--button-primary)] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[color:var(--button-primary-hover)]"
+              >
+                View Event Details →
+              </Link>
+              <Link
+                href="/events"
+                className="inline-block rounded-full border border-[color:var(--line)] bg-[color:var(--surface)] px-6 py-3 text-sm font-semibold text-[color:var(--ink)] transition-colors hover:bg-[color:var(--surface-soft)]"
+              >
+                Browse All Events
+              </Link>
+            </div>
+          </>
+        ) : (
+          <>
+            <h2 className="mb-3 text-3xl font-black [font-family:var(--font-heading)] md:text-4xl">
+              New Event Announcement Coming Soon
+            </h2>
+            <p className="mb-6 max-w-2xl text-[color:var(--muted)] md:text-lg">
+              We are preparing the next SUGNL meetup. Check back shortly or explore our community blogs while you wait.
+            </p>
+            <Link
+              href="/events"
+              className="inline-block rounded-full border border-[color:var(--nav-line)] bg-[color:var(--button-primary)] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[color:var(--button-primary-hover)]"
+            >
+              View Events →
+            </Link>
+          </>
+        )}
       </section>
 
-      <NewsletterSignupForm />
-    </div>
+      <section className="mb-12">
+        <div className="mb-6 flex items-end justify-between gap-4">
+          <div>
+            <h2 className="mb-2 text-3xl font-black [font-family:var(--font-heading)] md:text-4xl">
+              From Our Community Blogs
+            </h2>
+            <p className="max-w-2xl text-[color:var(--muted)] md:text-lg">
+              Sharp ideas, practical stories, and lessons learned straight from fellow builders in the SUGNL network.
+            </p>
+          </div>
+          <Link
+            href="/community-blogs"
+            className="shrink-0 text-sm font-semibold text-[color:var(--link)] hover:underline"
+          >
+            Explore all posts →
+          </Link>
+        </div>
+
+        {communityPosts.length > 0 ? (
+          <div className="grid gap-4 md:grid-cols-3">
+            {communityPosts.map((post) => (
+              <article
+                key={post.id}
+                className="rounded-xl border border-[color:var(--line)] bg-[color:var(--surface-soft)] p-4"
+              >
+                <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--muted)]">
+                  {post.sourceName} ·{" "}
+                  {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  })}
+                </p>
+                <h3 className="mb-2 line-clamp-2 text-lg font-bold text-[color:var(--ink)]">
+                  {post.title}
+                </h3>
+                {post.excerpt && (
+                  <p className="mb-3 line-clamp-3 text-sm leading-relaxed text-[color:var(--muted)]">
+                    {post.excerpt}
+                  </p>
+                )}
+                <a
+                  href={post.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-semibold text-[color:var(--link)] hover:underline"
+                >
+                  Read post →
+                </a>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <p className="rounded-xl border border-[color:var(--line)] bg-[color:var(--surface-soft)] p-4 text-sm text-[color:var(--muted)]">
+            Community posts are loading in. Visit the community blog page for the latest updates.
+          </p>
+        )}
+      </section>
+
+      {featureFlags.newsletter && (
+        <section className="surface-card p-6 md:p-8">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.15em] text-[color:var(--muted)]">
+            Stay In The Loop
+          </p>
+          <h2 className="mb-3 text-3xl font-black [font-family:var(--font-heading)] md:text-4xl">
+            Get meetup invites before they fill up
+          </h2>
+          <p className="mb-6 max-w-2xl text-[color:var(--muted)] md:text-lg">
+            Join the SUGNL newsletter for early event announcements, speaker highlights, and practical community updates you can use right away.
+          </p>
+          <Link
+            href="/newsletter"
+            className="inline-block rounded-full border border-[color:var(--nav-line)] bg-[color:var(--button-primary)] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[color:var(--button-primary-hover)]"
+          >
+            Sign up for newsletter →
+          </Link>
+        </section>
+      )}
+    </PageContainer>
   );
 }

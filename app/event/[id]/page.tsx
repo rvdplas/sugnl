@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import MarkdownContent from "@/components/MarkdownContent";
 import RegisterNowSection from "@/components/RegisterNowSection";
+import PageContainer from "@/components/PageContainer";
 
 interface PageProps {
   readonly params: Promise<{
@@ -21,9 +22,9 @@ export default async function EventPage({ params }: PageProps) {
   const agenda = getEventAgenda(event);
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12">
+    <PageContainer>
       <Link
-        href="/"
+        href="/events"
         className="mb-6 inline-flex items-center text-sm font-semibold text-[color:var(--link)] hover:opacity-80"
       >
         ← Back to Events
@@ -141,14 +142,14 @@ export default async function EventPage({ params }: PageProps) {
         <div className="surface-card bg-[color:var(--surface-muted)] p-6 text-center">
           <p className="text-[color:var(--muted)]">
             This event has already taken place. Check out our{" "}
-            <Link href="/" className="font-semibold text-[color:var(--link)] hover:opacity-80">
+            <Link href="/events" className="font-semibold text-[color:var(--link)] hover:opacity-80">
               upcoming events
             </Link>
             !
           </p>
         </div>
       )}
-    </div>
+    </PageContainer>
   );
 }
 

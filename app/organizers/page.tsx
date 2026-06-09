@@ -1,3 +1,6 @@
+import PageIntro from "@/components/PageIntro";
+import PageContainer from "@/components/PageContainer";
+
 export default function OrganizersPage() {
   const organizers = [
     {
@@ -18,15 +21,11 @@ export default function OrganizersPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12">
-      <div className="mb-12 text-center">
-        <h1 className="mb-4 text-4xl font-black tracking-tight [font-family:var(--font-heading)] md:text-5xl">
-          About us
-        </h1>
-        <p className="text-lg text-[color:var(--muted)]">
-          Meet the team behind SUGNL community events
-        </p>
-      </div>
+    <PageContainer>
+      <PageIntro
+        title="About us"
+        description="Meet the team behind SUGNL community events"
+      />
 
       <div className="grid gap-8 md:grid-cols-3">
         {organizers.map((organizer) => (
@@ -56,6 +55,6 @@ export default function OrganizersPage() {
           </div>
         ))}
       </div>
-    </div>
+    </PageContainer>
   );
 }

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { subscribeToNewsletter } from "@/lib/newsletter";
+import { featureFlags } from "@/lib/featureFlags";
 
 const subscribeRateLimit = new Map<string, number[]>();
 
@@ -26,6 +27,10 @@ function isRateLimited(ip: string): boolean {
 }
 
 export async function POST(request: NextRequest) {
+  if (!featureFlags.newsletter) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
+
   try {
     const body = await request.json();
     const clientIp = getClientIp(request);

@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { getDutchMvpDirectoryUrl, getDutchMvpsForYear } from "@/lib/sitecoreMvps";
+import PageIntro from "@/components/PageIntro";
+import PageContainer from "@/components/PageContainer";
 
 interface PageProps {
   readonly searchParams: Promise<{
@@ -59,15 +61,12 @@ export default async function DutchMvpsPage({ searchParams }: PageProps) {
   );
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12">
-      <header className="mb-8 text-center">
-        <h1 className="mb-4 text-4xl font-black tracking-tight [font-family:var(--font-heading)] md:text-5xl">
-          Dutch Sitecore MVPs
-        </h1>
-        <p className="mx-auto max-w-3xl text-lg text-[color:var(--muted)]">
-          Celebrating the Sitecore MVPs from the Netherlands for {year}. This list is fetched from the official Sitecore MVP directory.
-        </p>
-      </header>
+    <PageContainer>
+      <PageIntro
+        title="Dutch Sitecore MVPs"
+        description={`Celebrating the Sitecore MVPs from the Netherlands for ${year}. This list is fetched from the official Sitecore MVP directory.`}
+        sectionClassName="mb-8"
+      />
 
       <section className="surface-card mb-8 p-5 md:p-6">
         <div className="flex flex-col gap-5">
@@ -131,6 +130,6 @@ export default async function DutchMvpsPage({ searchParams }: PageProps) {
           ))}
         </section>
       )}
-    </div>
+    </PageContainer>
   );
 }

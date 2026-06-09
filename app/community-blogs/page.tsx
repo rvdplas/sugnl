@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { getLatestBlogPosts, getBlogSources } from "@/lib/blogFeeds";
 import { BlogContent } from "@/components/BlogContent";
+import PageIntro from "@/components/PageIntro";
+import PageContainer from "@/components/PageContainer";
 
 const BLOG_PAGE_TITLE = "Community blogs | SUGNL";
 const BLOG_PAGE_DESCRIPTION =
@@ -78,25 +80,23 @@ export default async function BlogPage() {
   };
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12">
+    <PageContainer>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListSchema) }}
       />
-      <section className="mb-8">
-        <h1 className="mb-3 text-4xl font-black [font-family:var(--font-heading)] md:text-5xl">
-          Community blogs
-        </h1>
-        <p className="max-w-2xl text-lg text-[color:var(--muted)]">
-          Articles and updates from people in our SUGNL community, and it is
-          open to others as well. Want your RSS feed added too? Please reach
-          out to{" "}
-          <a className="underline" href="mailto:info@sugnl.net">
-            info@sugnl.net
-          </a>
-          .
-        </p>
-      </section>
+
+      <PageIntro
+        title="Community blogs"
+        description={
+          <>
+            Articles and updates from people in our SUGNL community, and it is open to others as well. Want your RSS feed added too?
+            <br />
+            <br />
+            Please reach out to <a className="underline" href="mailto:info@sugnl.net">info@sugnl.net</a>.
+          </>
+        }
+      />
 
       {blogPosts.length > 0 ? (
         <BlogContent initialPosts={blogPosts} sources={sources} />
@@ -105,6 +105,6 @@ export default async function BlogPage() {
           No blog posts are available right now. Please check back later.
         </p>
       )}
-    </div>
+    </PageContainer>
   );
 }

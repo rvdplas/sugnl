@@ -5,12 +5,15 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "@/components/ThemeToggle";
+import { featureFlags } from "@/lib/featureFlags";
 
 const navigationItems = [
   { href: "/", label: "Home", mobileOnly: true },
-  { href: "/newsletter", label: "Newsletter", priority: "primary" },
+  { href: "/events", label: "Events", priority: "primary" },
+  ...(featureFlags.newsletter
+    ? [{ href: "/newsletter", label: "Newsletter", priority: "primary" }]
+    : []),
   { href: "/become-a-speaker", label: "Become a speaker", priority: "primary" },
-  { href: "/past-events", label: "Past events", priority: "primary" },
   { href: "/dutch-mvps", label: "Dutch MVPs", priority: "primary" },
   { href: "/community-blogs", label: "Community blogs", priority: "secondary" },
   { href: "/organizers", label: "About us", priority: "secondary" },

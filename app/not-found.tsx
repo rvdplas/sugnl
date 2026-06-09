@@ -1,8 +1,9 @@
 import Link from "next/link";
+import PageContainer from "@/components/PageContainer";
 
 export default function NotFound() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-24 text-center">
+    <PageContainer className="py-24">
       <h1 className="text-6xl font-bold mb-4">404</h1>
       <h2 className="text-2xl font-semibold mb-4">Page Not Found</h2>
       <p className="text-gray-600 mb-8">
@@ -14,6 +15,6 @@ export default function NotFound() {
       >
         Go Back Home
       </Link>
-    </div>
+    </PageContainer>
   );
 }
