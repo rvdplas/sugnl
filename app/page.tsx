@@ -4,7 +4,7 @@ import Image from "next/image";
 import MarkdownContent from "@/components/MarkdownContent";
 import RegisterNowSection from "@/components/RegisterNowSection";
 
-export default function Home() {
+export default async function Home() {
   const upcomingEvents = getUpcomingEvents();
   const event = upcomingEvents[0];
   const agenda = event ? getEventAgenda(event) : [];

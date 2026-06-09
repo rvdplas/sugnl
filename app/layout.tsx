@@ -16,9 +16,12 @@ const headingFont = Sora({
   variable: "--font-heading",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://sugnl.nl";
+
 export const metadata: Metadata = {
   title: "SUGNL - Community Events",
   description: "Join our community events, meetups, and tech talks",
+  metadataBase: new URL(siteUrl),
   icons: {
     icon: "/favicon.ico",
   },

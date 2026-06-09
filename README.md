@@ -181,6 +181,26 @@ This site is designed to run cheaply on Vercel's free tier:
 - [ ] Photo galleries from past events
 - [ ] User authentication for members
 
+## External Blog Feed Sources
+
+The website now supports external RSS blog feeds through a reusable adapter in [lib/blogFeeds.ts](lib/blogFeeds.ts).
+
+- Feed data is loaded on request.
+- Responses are cached for 24 hours using Next.js revalidation.
+- The home page shows the latest feed items.
+- An API endpoint is available at `/api/blogposts`.
+
+To add more sources, append entries to the `blogSources` array in [lib/blogFeeds.ts](lib/blogFeeds.ts):
+
+```ts
+{
+  id: "my-source",
+  name: "My Source",
+  websiteUrl: "https://example.com",
+  feedUrl: "https://example.com/rss.xml",
+}
+```
+
 ## Production Considerations
 
 For production use, consider:
