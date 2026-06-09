@@ -1,0 +1,69 @@
+{
+  "id": "2026-05-21-sitecore-marketplace-workshop",
+  "title": "21 May 2026",
+  "date": "2026-05-21",
+  "startTime": "17:00",
+  "endTime": "21:30",
+  "location": "Macaw, Taurusavenue 16 E, 2132 LS Hoofddorp",
+  "locationUrl": "https://www.google.com/maps/search/Macaw+Nederland",
+  "registrationUrl": "https://forms.office.com/e/0SALPeecxU",
+  "description": "An evening focused on the Sitecore Marketplace, with community presentations, a hands-on workshop, dinner, and time for networking.",
+  "activities": [
+    {
+      "type": "info",
+      "subject": "Doors open",
+      "description": "Welcome to the event! Grab a drink and get ready for an evening of learning and networking.",
+      "startTime": "17:00"
+    },
+    {
+      "type": "info",
+      "subject": "Diner",
+      "description": "Enjoy some good food and drinks before we kick off the sessions.",
+      "startTime": "17:30"
+    },
+    {
+      "speaker": {
+        "name": "Bart Plasmeijer",
+        "image": "/presenters/bartplasmeijer.jpg"
+      },
+      "subject": "SitecoreAI Walkthrough",
+      "description": "During this practical session, Bart will show how SitecoreAI works in practice. You’ll get a walkthrough of the key capabilities, see concrete examples, and discover how SitecoreAI can support your day-to-day Sitecore work.",
+      "startTime": "18:00"
+    },
+    {
+      "speaker": {
+        "name": "Derk Hudepol",
+        "image": "/presenters/derkhudepol.jpg"
+      },
+      "subject": "How to build the developer AI workbench for Sitecore AI",
+      "description": "In this session, Derk will share how to set up an AI Workbench tailored for Sitecore AI developers, drawn from hands-on experience across real-world projects delivered with his teams. We'll explore what to realistically expect from AI, separating the myths from the actual results. \n \n From there, we'll dive into the various facets of building a workbench: Agents, Skills, and orchestration — and how they come together to form a powerful development toolkit. We'll also look at how this shift impacts your role as a developer and how it can supercharge your productivity.",
+      "startTime": "18:30"
+    },
+    {
+      "type": "break",
+      "subject": "Break",
+      "startTime": "19:00"
+    },
+    {
+      "speaker": {
+        "name": "Sebastian Winter",
+        "image": "/presenters/sebastianwinter.jpg"
+      },
+      "subject": "SitecoreAI Marketplace Code Jam - From Idea to App in One Session",
+      "description": "Turn your ideas into working apps in a single session. \n\n SitecoreAI Marketplace Code Jam is a fast paced, hands on workshop designed for Developers, Solution Architects, and other technical practitioners who want to extend SitecoreAI using Custom Apps, App Studio, Marketplace, and modern DevEx tools like Blok Design System and Blok MCP. \n\n Bring your laptop, your idea, your curiosity, and some AI tokens. Let’s build something remarkable together.",
+      "startTime": "19:15"
+    },
+    {
+      "type": "info",
+      "subject": "Drinks and snacks",
+      "description": "We take some time to close the evening with a few drinks.",
+      "startTime": "20:45"
+    },
+    {
+      "type": "info",
+      "subject": "Event done",
+      "startTime": "21:30"
+    }
+  ],
+  "isPast": true
+}
