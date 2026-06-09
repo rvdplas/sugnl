@@ -39,3 +39,20 @@ export interface RSVP {
   email: string;
   timestamp: string;
 }
+
+export interface BlogSource {
+  id: string;
+  name: string;
+  websiteUrl: string;
+  feedUrl: string;
+}
+
+export interface BlogPost {
+  id: string;
+  sourceId: string;
+  sourceName: string;
+  title: string;
+  url: string;
+  excerpt?: string;
+  publishedAt: string;
+}

@@ -9,6 +9,7 @@ const navigationItems = [
   { href: "/", label: "Home" },
   { href: "/become-a-speaker", label: "Become a speaker" },
   { href: "/past-events", label: "Past events" },
+  { href: "/community-blogs", label: "Community blogs" },
   { href: "/organizers", label: "About us" },
 ];
 
