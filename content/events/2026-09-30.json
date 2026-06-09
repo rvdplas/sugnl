@@ -1,0 +1,42 @@
+{
+  "id": "2026-09-30-iO",
+  "title": "30 September 2026",
+  "date": "2026-09-30",
+  "startTime": "17:00",
+  "endTime": "21:30",
+  "location": "iO Den Bosch, Magistratenlaan 4, 5223 MD ’s-Hertogenbosch",
+  "locationUrl": "https://www.google.com/maps/search/iO+Den+Bosch",
+  "registrationUrl": "",
+  "description": "This is the placeholder for the next event. We will update the details as soon as they are available.",
+  "activities": [
+    {
+      "type": "info",
+      "subject": "Doors open",
+      "description": "Welcome to the event! Grab a drink and get ready for an evening of learning and networking.",
+      "startTime": "17:00"
+    },
+    {
+      "type": "info",
+      "subject": "Diner",
+      "description": "Enjoy some good food and drinks before we kick off the sessions.",
+      "startTime": "17:30"
+    },
+    {
+      "type": "break",
+      "subject": "Break",
+      "startTime": "19:00"
+    },
+    {
+      "type": "info",
+      "subject": "Drinks and snacks",
+      "description": "We take some time to close the evening with a few drinks.",
+      "startTime": "20:45"
+    },
+    {
+      "type": "info",
+      "subject": "Event done",
+      "startTime": "21:30"
+    }
+  ],
+  "isPast": false
+}
