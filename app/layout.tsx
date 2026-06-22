@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Sora } from "next/font/google";
-import Script from "next/script";
 import SiteHeader from "@/components/SiteHeader";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next"
@@ -27,27 +26,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script src="/theme-init.js" />
+      </head>
       <body
         className={`${bodyFont.variable} ${headingFont.variable} antialiased`}
         suppressHydrationWarning
       >
-        <Script id="theme-init" strategy="beforeInteractive">
-          {`(() => {
-            try {
-              const theme = localStorage.getItem("theme");
-              if (theme === "light" || theme === "dark") {
-                document.documentElement.setAttribute("data-theme", theme);
-              }
-            } catch (_) {}
-          })();`}
-        </Script>
         <SiteHeader />
         <main className="min-h-screen">{children}</main>
         <SpeedInsights />
