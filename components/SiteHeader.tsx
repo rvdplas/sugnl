@@ -90,7 +90,7 @@ export default function SiteHeader() {
               width={200}
               height={32}
               priority
-              className="h-8 w-auto max-w-[200px] object-contain sm:max-w-xs md:max-w-none"
+              className="h-auto w-[200px] max-w-[200px] object-contain sm:max-w-xs md:max-w-none"
             />
           </Link>
 

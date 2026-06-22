@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { getLatestBlogPosts, getBlogSources } from "@/lib/blogFeeds";
 import { BlogContent } from "@/components/BlogContent";
 import PageIntro from "@/components/PageIntro";
@@ -50,6 +51,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
   const blogPosts = await getLatestBlogPosts(20);
   const sources = getBlogSources();
   const blogListSchema = {
@@ -83,6 +85,8 @@ export default async function BlogPage() {
     <PageContainer>
       <script
         type="application/ld+json"
+        nonce={nonce}
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListSchema) }}
       />
 
