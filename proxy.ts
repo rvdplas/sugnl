@@ -7,7 +7,7 @@ function buildCsp(nonce: string) {
     `script-src 'self' 'nonce-${nonce}' https://va.vercel-scripts.com`,
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com data:",
-    "img-src 'self' data: blob: https://images.unsplash.com",
+    "img-src 'self' data: blob: https://images.unsplash.com https://mvp.sitecore.com https://mvp.sitecore.net https://www.gravatar.com https://secure.gravatar.com",
     "connect-src 'self' https://vitals.vercel-insights.com",
     "object-src 'none'",
     "base-uri 'self'",
