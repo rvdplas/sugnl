@@ -20,9 +20,9 @@ const blogSources: BlogSource[] = [
   },
   {
     id: "kayee",
-    name: "Robert Hock",
+    name: "Robbert Hock",
     websiteUrl: "https://www.kayee.nl",
-    feedUrl: "https://www.kayee.nl/feed/",
+    feedUrl: "https://www.kayee.nl/category/sitecore/feed/",
   },
 
   {
