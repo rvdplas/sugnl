@@ -14,17 +14,21 @@ export function BlogSourceFilter({
   posts,
   onSourcesChange,
 }: BlogSourceFilterProps) {
-  const allSourceIds = sources.map((s) => s.id);
-  const [selectedSources, setSelectedSources] = useState<Set<string>>(
-    new Set(allSourceIds)
-  );
-
   const postCountBySource = posts.reduce(
     (acc, post) => {
       acc[post.sourceId] = (acc[post.sourceId] ?? 0) + 1;
       return acc;
     },
     {} as Record<string, number>
+  );
+
+  const sourcesWithPosts = sources.filter(
+    (source) => (postCountBySource[source.id] ?? 0) > 0
+  );
+
+  const allSourceIds = sourcesWithPosts.map((s) => s.id);
+  const [selectedSources, setSelectedSources] = useState<Set<string>>(
+    new Set(allSourceIds)
   );
 
   const handleSelectSource = (sourceId: string) => {
@@ -63,7 +67,7 @@ export function BlogSourceFilter({
           All sources ({posts.length})
         </button>
 
-        {sources.map((source) => {
+        {sourcesWithPosts.map((source) => {
           const postCount = postCountBySource[source.id] ?? 0;
           const isSelected = selectedSources.has(source.id);
 
