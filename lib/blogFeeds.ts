@@ -5,6 +5,10 @@ const REVALIDATE_AFTER_ONE_DAY_SECONDS = 60 * 60 * 24;
 
 const parser = new Parser();
 
+interface GetLatestBlogPostsOptions {
+  monthsBack?: number;
+}
+
 const blogSources: BlogSource[] = [
     {
     id: "stockpick",
@@ -30,6 +34,12 @@ const blogSources: BlogSource[] = [
     name: "Ronald van der Plas",
     websiteUrl: "https://www.contentinsights.dev",
     feedUrl: "https://www.contentinsights.dev/feeds/posts/default?alt=rss",
+  },
+  {
+    id: "robhabraken",
+    name: "Rob Habraken",
+    websiteUrl: "https://www.robhabraken.nl",
+    feedUrl: "https://www.robhabraken.nl/index.php/feed/",
   },
 ];
 
@@ -91,7 +101,18 @@ async function loadRssSource(source: BlogSource): Promise<BlogPost[]> {
   return posts;
 }
 
-export async function getLatestBlogPosts(limit = 6): Promise<BlogPost[]> {
+function filterPostsByMonths(posts: BlogPost[], monthsBack: number): BlogPost[] {
+  const cutoff = new Date();
+  cutoff.setMonth(cutoff.getMonth() - monthsBack);
+  const cutoffTime = cutoff.getTime();
+
+  return posts.filter((post) => new Date(post.publishedAt).getTime() >= cutoffTime);
+}
+
+export async function getLatestBlogPosts(
+  limit = 6,
+  options: GetLatestBlogPostsOptions = {}
+): Promise<BlogPost[]> {
   const allPosts = await Promise.all(
     blogSources.map(async (source) => {
       try {
@@ -103,10 +124,16 @@ export async function getLatestBlogPosts(limit = 6): Promise<BlogPost[]> {
     })
   );
 
-  return allPosts
+  const mergedPosts = allPosts
     .flat()
-    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
-    .slice(0, limit);
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+
+  const scopedPosts =
+    typeof options.monthsBack === "number" && options.monthsBack > 0
+      ? filterPostsByMonths(mergedPosts, options.monthsBack)
+      : mergedPosts;
+
+  return scopedPosts.slice(0, limit);
 }
 
 export function getBlogSources(): BlogSource[] {
