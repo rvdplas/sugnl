@@ -52,7 +52,7 @@ export const metadata: Metadata = {
 
 export default async function BlogPage() {
   const nonce = (await headers()).get("x-nonce") ?? undefined;
-  const blogPosts = await getLatestBlogPosts(20);
+  const blogPosts = await getLatestBlogPosts(80, { monthsBack: 12 });
   const sources = getBlogSources();
   const blogListSchema = {
     "@context": "https://schema.org",
@@ -94,7 +94,9 @@ export default async function BlogPage() {
         title="Community blogs"
         description={
           <>
-            Articles and updates from people in our SUGNL community, and it is open to others as well. Want your RSS feed added too?
+            Articles and updates from people in our SUGNL community, and it is open to others as well.
+            We currently show posts from the last 12 months to keep this overview relevant.
+            Want your RSS feed added too?
             <br />
             <br />
             Please reach out to <a className="underline" href="mailto:info@sugnl.net">info@sugnl.net</a>.

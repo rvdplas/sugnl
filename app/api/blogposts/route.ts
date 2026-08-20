@@ -3,7 +3,7 @@ import { getBlogSources, getLatestBlogPosts } from "@/lib/blogFeeds";
 
 export async function GET() {
   try {
-    const posts = await getLatestBlogPosts(10);
+    const posts = await getLatestBlogPosts(80, { monthsBack: 12 });
 
     return NextResponse.json(
       {

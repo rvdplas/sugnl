@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { BlogPost } from "@/types";
 
 interface BlogPostListProps {
@@ -7,10 +8,29 @@ interface BlogPostListProps {
   selectedSourceIds: string[];
 }
 
+const POSTS_PER_PAGE = 12;
+
 export function BlogPostList({ posts, selectedSourceIds }: BlogPostListProps) {
+  const [currentPage, setCurrentPage] = useState(1);
+
   const filteredPosts = posts.filter((post) =>
     selectedSourceIds.includes(post.sourceId)
   );
+
+  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedSourceIds]);
+
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+  }, [currentPage, totalPages]);
+
+  const pageStart = (currentPage - 1) * POSTS_PER_PAGE;
+  const pagePosts = filteredPosts.slice(pageStart, pageStart + POSTS_PER_PAGE);
 
   if (filteredPosts.length === 0) {
     return (
@@ -22,7 +42,7 @@ export function BlogPostList({ posts, selectedSourceIds }: BlogPostListProps) {
 
   return (
     <div className="space-y-4">
-      {filteredPosts.map((post) => (
+      {pagePosts.map((post) => (
         <article
           key={post.id}
           className="rounded-xl border border-[color:var(--line)] bg-[color:var(--surface-soft)] p-4"
@@ -53,6 +73,35 @@ export function BlogPostList({ posts, selectedSourceIds }: BlogPostListProps) {
           </a>
         </article>
       ))}
+
+      {totalPages > 1 && (
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-[color:var(--line)] pt-4">
+          <p className="text-sm text-[color:var(--muted)]">
+            Showing {pageStart + 1}-{Math.min(pageStart + POSTS_PER_PAGE, filteredPosts.length)} of {filteredPosts.length} posts
+          </p>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
+              disabled={currentPage === 1}
+              className="rounded-full border border-[color:var(--line)] bg-[color:var(--surface)] px-3 py-1.5 text-sm font-medium text-[color:var(--muted)] transition-colors enabled:hover:bg-[color:var(--surface-soft)] disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Previous
+            </button>
+            <span className="text-sm font-medium text-[color:var(--ink)]">
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              type="button"
+              onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))}
+              disabled={currentPage === totalPages}
+              className="rounded-full border border-[color:var(--line)] bg-[color:var(--surface)] px-3 py-1.5 text-sm font-medium text-[color:var(--muted)] transition-colors enabled:hover:bg-[color:var(--surface-soft)] disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
