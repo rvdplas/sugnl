@@ -69,7 +69,7 @@ export function BlogPostList({ posts, selectedSourceIds }: BlogPostListProps) {
             rel="noopener noreferrer"
             className="text-sm font-semibold text-[color:var(--link)] hover:underline"
           >
-            Read post →
+            Read post
           </a>
         </article>
       ))}

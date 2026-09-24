@@ -5,6 +5,7 @@
   "startTime": "18:30",
   "endTime": "20:00",
   "location": "Venue Name, Street",
+  "parking": "Optional: parking garage address, e.g. Example Street 1, 1234 AB City",
   "registrationUrl": "https://forms.office.com/e/your-form-id",
   "description": "A short summary of the event that appears on event cards and past-event listings.",
   "activities": [

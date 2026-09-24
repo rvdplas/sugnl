@@ -1,4 +1,5 @@
 import RegisterNowButton from "@/components/RegisterNowButton";
+import { parseLocation } from "@/lib/events";
 import { Event } from "@/types";
 
 type RegisterNowSectionProps = {
@@ -6,18 +7,6 @@ type RegisterNowSectionProps = {
   compact?: boolean;
   className?: string;
 };
-
-function getLocationParts(location: string): { venue: string; addressLines: string[] } {
-  const parts = location
-    .split(",")
-    .map((part) => part.trim())
-    .filter(Boolean);
-
-  return {
-    venue: parts[0] ?? location,
-    addressLines: parts.length > 1 ? parts.slice(1) : [],
-  };
-}
 
 export default function RegisterNowSection({
   event,
@@ -50,7 +39,7 @@ export default function RegisterNowSection({
     );
   }
 
-  const { venue, addressLines } = getLocationParts(event.location);
+  const { venue, addressLines } = parseLocation(event.location);
 
   return (
     <section

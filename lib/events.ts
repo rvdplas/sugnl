@@ -51,6 +51,7 @@ function isValidEvent(value: unknown): value is Event {
     typeof event.startTime === "string" &&
     typeof event.endTime === "string" &&
     typeof event.location === "string" &&
+    (typeof event.parking === "undefined" || typeof event.parking === "string") &&
     typeof event.registrationUrl === "string" &&
     typeof event.description === "string" &&
     Array.isArray(event.activities) &&
@@ -100,6 +101,18 @@ export function getEventById(id: string): Event | undefined {
 
 export function getAllEventIds(): string[] {
   return events.map((event) => event.id);
+}
+
+export function parseLocation(location: string): { venue: string; addressLines: string[] } {
+  const parts = location
+    .split(",")
+    .map((part) => part.trim())
+    .filter(Boolean);
+
+  return {
+    venue: parts[0] ?? location,
+    addressLines: parts.length > 1 ? parts.slice(1) : [],
+  };
 }
 
 export type AgendaItem =

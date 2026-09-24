@@ -27,6 +27,7 @@ export interface Event {
   endTime: string;
   location: string;
   locationUrl?: string;
+  parking?: string;
   registrationUrl: string;
   description: string;
   activities: Activity[];

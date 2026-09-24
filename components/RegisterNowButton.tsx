@@ -7,7 +7,7 @@ type RegisterNowButtonProps = {
 export default function RegisterNowButton({
   href,
   className = "",
-  label = "Register now ->",
+  label = "Register now",
 }: RegisterNowButtonProps) {
   const baseClassName =
     "inline-block rounded-full border border-[color:var(--nav-line)] bg-[color:var(--button-primary)] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[color:var(--button-primary-hover)]";
