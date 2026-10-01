@@ -56,6 +56,12 @@ export default async function EventPage({ params }: PageProps) {
           </p>
           <p className="text-lg">🕐 {event.startTime} - {event.endTime}</p>
           <p className="text-lg">📍 {event.location}</p>
+          {event.parking && (
+            <div className="text-lg md:col-span-2">
+              <p className="font-semibold text-[color:var(--ink)]">🚗 Coming by car?</p>
+              <p className="text-[color:var(--muted)]">Park at the parking garage: {event.parking}</p>
+            </div>
+          )}
         </div>
 
         <MarkdownContent content={event.description} className="text-[color:var(--ink)]" />

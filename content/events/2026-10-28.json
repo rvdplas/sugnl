@@ -24,11 +24,11 @@
     },
     {
       "speaker": {
-        "name": "",
-        "image": ""
+        "name": "Rob Habraken",
+        "image": "/presenters/robhabraken.jpg"
       },
-      "subject": "TBD",
-      "description": "",
+      "subject": "From Next to Nitro: Sitecore’s Content SDK running on Nuxt.js",
+      "description": "While SitecoreAI officially champions Next.js, many enterprise frontend teams have standardized on Vue and Nuxt. In this session, we explore why and how we engineered a first-class, community-driven Nuxt 3 port of the official Content SDK. We will dive into the architectural shift from Next.js to Nitro, uncover how edge middleware and Sitecore Pages authoring were tackled, and discuss what true frontend flexibility means for the modern composable stack.",
       "startTime": "18:00"
     },
 
