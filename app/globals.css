@@ -129,6 +129,16 @@ body {
     border-color: var(--line);
   }
 
+  :root[data-theme="dark"] .map-embed {
+    filter: invert(90%) hue-rotate(180deg) brightness(0.95) contrast(0.9);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .map-embed {
+      filter: invert(90%) hue-rotate(180deg) brightness(0.95) contrast(0.9);
+    }
+  }
+
   .pill {
     @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold;
   }

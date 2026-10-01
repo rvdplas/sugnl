@@ -17,6 +17,7 @@ function buildCsp(nonce: string, isDevelopment: boolean) {
     "font-src 'self' https://fonts.gstatic.com data:",
     "img-src 'self' data: blob: https://images.unsplash.com https://mvp.sitecore.com https://mvp.sitecore.net https://www.gravatar.com https://secure.gravatar.com",
     connectSrc,
+    "frame-src 'self' https://www.google.com",
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",
