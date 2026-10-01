@@ -1,6 +1,4 @@
 import MarkdownContent from "@/components/MarkdownContent";
-import RegisterNowButton from "@/components/RegisterNowButton";
-import AddToCalendar from "@/components/event/AddToCalendar";
 import { CalendarIcon, PinIcon } from "@/components/event/icons";
 import { parseLocation } from "@/lib/events";
 import { Event } from "@/types";
@@ -12,7 +10,6 @@ type EventHeroProps = {
 
 export default function EventHero({ event, intro }: EventHeroProps) {
   const { venue, addressLines } = parseLocation(event.location);
-  const hasRegistrationUrl = event.registrationUrl.trim().length > 0;
   const formattedDate = new Date(event.date).toLocaleDateString("en-US", {
     weekday: "long",
     year: "numeric",
@@ -48,7 +45,7 @@ export default function EventHero({ event, intro }: EventHeroProps) {
           <MarkdownContent content={intro} className="mb-8 max-w-2xl text-lg leading-relaxed text-[color:var(--muted)] md:text-xl" />
         )}
 
-        <ul className="mb-8 grid gap-5 sm:grid-cols-[auto_minmax(0,1fr)] sm:gap-0 md:max-w-3xl">
+        <ul className="grid gap-5 sm:grid-cols-[auto_minmax(0,1fr)] sm:gap-0 md:max-w-3xl">
           <li className="flex items-start gap-3 sm:pr-6">
             <CalendarIcon className="mt-0.5 h-6 w-6 shrink-0 text-[color:var(--link)]" />
             <div>
@@ -72,15 +69,6 @@ export default function EventHero({ event, intro }: EventHeroProps) {
             </div>
           </li>
         </ul>
-
-        {!event.isPast && (
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-start">
-            {hasRegistrationUrl && (
-              <RegisterNowButton href={event.registrationUrl} />
-            )}
-            <AddToCalendar event={event} />
-          </div>
-        )}
       </div>
     </section>
   );
