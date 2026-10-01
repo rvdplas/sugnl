@@ -53,6 +53,8 @@ function isValidEvent(value: unknown): value is Event {
     typeof event.location === "string" &&
     (typeof event.parking === "undefined" || typeof event.parking === "string") &&
     typeof event.registrationUrl === "string" &&
+    (typeof event.recapUrl === "undefined" || typeof event.recapUrl === "string") &&
+    (typeof event.summary === "undefined" || typeof event.summary === "string") &&
     typeof event.description === "string" &&
     Array.isArray(event.activities) &&
     event.activities.length >= 1 &&

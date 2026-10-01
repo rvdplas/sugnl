@@ -29,6 +29,8 @@ export interface Event {
   locationUrl?: string;
   parking?: string;
   registrationUrl: string;
+  recapUrl?: string;
+  summary?: string;
   description: string;
   activities: Activity[];
   isPast: boolean;

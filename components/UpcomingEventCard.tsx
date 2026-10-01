@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import MarkdownContent from "@/components/MarkdownContent";
+import RegisterNowButton from "@/components/RegisterNowButton";
 import { parseLocation } from "@/lib/events";
 import { Event } from "@/types";
 
@@ -123,14 +124,7 @@ export default function UpcomingEventCard({ event }: UpcomingEventCardProps) {
 
                 <div className="flex flex-wrap gap-3">
                   {hasRegistrationUrl && (
-                    <a
-                      href={event.registrationUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-[color:var(--nav-line)] bg-[color:var(--button-primary)] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[color:var(--button-primary-hover)]"
-                    >
-                      Register now
-                    </a>
+                    <RegisterNowButton href={event.registrationUrl} />
                   )}
                   <Link
                     href={`/event/${event.id}`}

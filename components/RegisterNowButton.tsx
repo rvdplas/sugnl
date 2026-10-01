@@ -1,3 +1,6 @@
+import { ArrowRightIcon } from "@/components/event/icons";
+import { primaryButtonClassName } from "@/components/event/styles";
+
 type RegisterNowButtonProps = {
   href: string;
   className?: string;
@@ -9,17 +12,15 @@ export default function RegisterNowButton({
   className = "",
   label = "Register now",
 }: RegisterNowButtonProps) {
-  const baseClassName =
-    "inline-block rounded-full border border-[color:var(--nav-line)] bg-[color:var(--button-primary)] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[color:var(--button-primary-hover)]";
-
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`${baseClassName} ${className}`.trim()}
+      className={`${primaryButtonClassName} ${className}`.trim()}
     >
       {label}
+      <ArrowRightIcon className="h-4 w-4" />
     </a>
   );
 }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import RegisterNowButton from "@/components/RegisterNowButton";
 import AddToCalendar from "@/components/event/AddToCalendar";
 import { ArrowRightIcon } from "@/components/event/icons";
 import { cardClassName, cardHeadingClassName, primaryButtonClassName } from "@/components/event/styles";
@@ -38,15 +39,7 @@ export default function EventRegisterCard({ event }: EventRegisterCardProps) {
           <p className="mb-6 leading-relaxed text-[color:var(--muted)]">
             Registration is open! Save your spot and be part of another great SUGNL evening.
           </p>
-          <a
-            href={event.registrationUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${primaryButtonClassName} w-full`}
-          >
-            Register now
-            <ArrowRightIcon className="h-4 w-4" />
-          </a>
+          <RegisterNowButton href={event.registrationUrl} className="w-full" />
         </>
       ) : (
         <p className="rounded-xl border border-[color:var(--line)] bg-[color:var(--surface-muted)] px-4 py-3 text-sm font-semibold leading-relaxed text-[color:var(--ink)]">

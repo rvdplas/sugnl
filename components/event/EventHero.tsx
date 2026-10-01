@@ -1,7 +1,7 @@
 import MarkdownContent from "@/components/MarkdownContent";
+import RegisterNowButton from "@/components/RegisterNowButton";
 import AddToCalendar from "@/components/event/AddToCalendar";
-import { ArrowRightIcon, CalendarIcon, PinIcon } from "@/components/event/icons";
-import { primaryButtonClassName } from "@/components/event/styles";
+import { CalendarIcon, PinIcon } from "@/components/event/icons";
 import { parseLocation } from "@/lib/events";
 import { Event } from "@/types";
 
@@ -76,10 +76,7 @@ export default function EventHero({ event, intro }: EventHeroProps) {
         {!event.isPast && (
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-start">
             {hasRegistrationUrl && (
-              <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer" className={primaryButtonClassName}>
-                Register now
-                <ArrowRightIcon className="h-4 w-4" />
-              </a>
+              <RegisterNowButton href={event.registrationUrl} />
             )}
             <AddToCalendar event={event} />
           </div>
