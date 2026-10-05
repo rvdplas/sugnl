@@ -1,5 +1,6 @@
 import type { ComponentType, SVGProps } from "react";
 import { CarIcon, ExternalLinkIcon, PinIcon } from "@/components/event/icons";
+import MapEmbed from "@/components/event/MapEmbed";
 import { cardClassName, cardHeadingClassName } from "@/components/event/styles";
 import { parseLocation } from "@/lib/events";
 import { Event } from "@/types";
@@ -89,13 +90,7 @@ export default function EventLocationCard({ event }: EventLocationCardProps) {
       </div>
 
       <div className="h-52 overflow-hidden rounded-xl border border-[color:var(--line)] bg-[color:var(--bg-soft)]">
-        <iframe
-          src={embedUrl}
-          title={`Map showing ${venue}`}
-          loading="lazy"
-          referrerPolicy="strict-origin-when-cross-origin"
-          className="map-embed h-full w-full border-0"
-        />
+        <MapEmbed src={embedUrl} title={`Map showing ${venue}`} />
       </div>
     </section>
   );

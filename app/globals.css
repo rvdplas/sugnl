@@ -143,3 +143,36 @@ body {
     @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold;
   }
 }
+
+/* Extra `html` raises specificity above the library's own #cc-main defaults. */
+html #cc-main {
+  --cc-font-family: var(--font-body), sans-serif;
+  --cc-bg: var(--surface);
+  --cc-primary-color: var(--ink);
+  --cc-secondary-color: var(--muted);
+  --cc-link-color: var(--link);
+  --cc-btn-primary-bg: var(--button-primary);
+  --cc-btn-primary-color: #ffffff;
+  --cc-btn-primary-border-color: var(--button-primary);
+  --cc-btn-primary-hover-bg: var(--button-primary-hover);
+  --cc-btn-primary-hover-color: #ffffff;
+  --cc-btn-primary-hover-border-color: var(--button-primary-hover);
+  --cc-btn-secondary-bg: var(--surface-soft);
+  --cc-btn-secondary-color: var(--ink);
+  --cc-btn-secondary-border-color: var(--line);
+  --cc-btn-secondary-hover-bg: var(--surface-muted);
+  --cc-btn-secondary-hover-color: var(--ink);
+  --cc-btn-secondary-hover-border-color: var(--line);
+  --cc-separator-border-color: var(--line);
+  --cc-toggle-on-bg: var(--button-primary);
+  --cc-toggle-readonly-bg: var(--line);
+  --cc-cookie-category-block-bg: var(--surface-soft);
+  --cc-cookie-category-block-border: var(--line);
+  --cc-cookie-category-block-hover-bg: var(--surface-muted);
+  --cc-cookie-category-block-hover-border: var(--line);
+  --cc-cookie-category-expanded-block-bg: var(--surface-muted);
+  --cc-cookie-category-expanded-block-hover-bg: var(--surface-muted);
+  --cc-footer-bg: var(--surface-soft);
+  --cc-footer-color: var(--muted);
+  --cc-footer-border-color: var(--line);
+}
