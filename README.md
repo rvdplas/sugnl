@@ -6,7 +6,7 @@ A simple, cost-effective community events website built with Next.js, TypeScript
 
 - 🎯 **Event Listings**: Display upcoming and past events
 - 👥 **Speaker Information**: Showcase speakers and their bios
-- 📝 **RSVP System**: Let attendees register for events
+- 📝 **Event Registration**: Links to each event's registration form (`registrationUrl`)
 - 📱 **Responsive Design**: Works on all devices
 - ⚡ **Fast & Lightweight**: Optimized for minimal costs on Vercel
 
@@ -47,14 +47,12 @@ npm run dev
 sugnl/
 ├── app/                      # Next.js App Router pages
 │   ├── api/                  # API routes
-│   │   └── rsvp/            # RSVP endpoint
 │   ├── event/[id]/          # Event detail pages
 │   ├── past-events/         # Past events page
 │   ├── layout.tsx           # Root layout
 │   ├── page.tsx             # Home page
 │   └── globals.css          # Global styles
 ├── components/              # React components
-│   └── RSVPForm.tsx        # RSVP form component
 ├── lib/                     # Utility functions
 │   └── events.ts           # Event data and functions
 ├── types/                   # TypeScript types
@@ -181,7 +179,6 @@ This site is designed to run cheaply on Vercel's free tier:
 ## Future Enhancements
 
 - [ ] Connect to a database (e.g., Vercel Postgres, Supabase)
-- [ ] Email confirmations for RSVPs
 - [ ] Admin panel for managing events
 - [ ] Calendar integration (iCal/Google Calendar)
 - [ ] Social sharing features
@@ -216,8 +213,7 @@ For production use, consider:
 2. **Email Service**: Add email notifications (Resend, SendGrid)
 3. **Analytics**: Add Google Analytics or Vercel Analytics
 4. **SEO**: Add proper meta tags and structured data
-5. **Rate Limiting**: Protect the RSVP endpoint from abuse
-6. **Error Tracking**: Add Sentry or similar service
+5. **Error Tracking**: Add Sentry or similar service
 
 ## License
 

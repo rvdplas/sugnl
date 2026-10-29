@@ -35,13 +35,6 @@ export interface Event {
   activities: Activity[];
 }
 
-export interface RSVP {
-  eventId: string;
-  name: string;
-  email: string;
-  timestamp: string;
-}
-
 export interface BlogSource {
   id: string;
   name: string;
