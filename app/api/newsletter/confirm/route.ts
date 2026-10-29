@@ -22,7 +22,9 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
-    console.error("Newsletter confirm error:", error);
+    const { name, code } = (error ?? {}) as { name?: string; code?: string };
+    // Name and code only: database errors can quote the email address.
+    console.error("Newsletter confirm error:", name, code);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

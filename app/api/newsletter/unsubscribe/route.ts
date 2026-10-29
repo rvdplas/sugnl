@@ -58,7 +58,9 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(NEUTRAL_RESPONSE, { status: 200 });
   } catch (error) {
-    console.error("Newsletter unsubscribe error:", error);
+    const { name, code } = (error ?? {}) as { name?: string; code?: string };
+    // Name and code only: database errors can quote the email address.
+    console.error("Newsletter unsubscribe error:", name, code);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
