@@ -84,7 +84,7 @@ interface BannerBarProps {
 /** The banner's look, shared by the live banner and the admin preview. */
 export function BannerBar({ banner, onDismiss }: BannerBarProps) {
   return (
-    <aside aria-label="Announcement" className="bg-gradient-to-r from-[#5b3df5] to-[#1f6fe0] text-white">
+    <aside aria-label="Announcement" className="bg-linear-to-r from-[#5b3df5] to-[#1f6fe0] text-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2 text-sm">
         <p>
           {parseBannerMessage(banner.message).map((segment, index) =>
@@ -107,7 +107,7 @@ export function BannerBar({ banner, onDismiss }: BannerBarProps) {
             type="button"
             onClick={onDismiss}
             aria-label="Dismiss announcement"
-            className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+            className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition hover:bg-white/15 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-white"
           >
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden="true">
               <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />

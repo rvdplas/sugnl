@@ -17,7 +17,7 @@ export default function EventRegisterCard({ event }: EventRegisterCardProps) {
         <h2 id="register-heading" className={`${cardHeadingClassName} mb-3`}>
           This event has passed
         </h2>
-        <p className="mb-6 leading-relaxed text-[color:var(--muted)]">
+        <p className="mb-6 leading-relaxed text-(--muted)">
           Thanks to everyone who joined. Keep an eye out for our next SUGNL evening.
         </p>
         <Link href="/events" className={`${primaryButtonClassName} w-full`}>
@@ -37,17 +37,17 @@ export default function EventRegisterCard({ event }: EventRegisterCardProps) {
       </h2>
       {hasRegistrationUrl ? (
         <>
-          <p className="mb-6 leading-relaxed text-[color:var(--muted)]">
+          <p className="mb-6 leading-relaxed text-(--muted)">
             Registration is open! Save your spot and be part of another great SUGNL evening.
           </p>
           <RegisterNowButton href={event.registrationUrl} className="w-full" />
         </>
       ) : (
-        <p className="rounded-xl border border-[color:var(--line)] bg-[color:var(--surface-muted)] px-4 py-3 text-sm font-semibold leading-relaxed text-[color:var(--ink)]">
+        <p className="rounded-xl border border-(--line) bg-(--surface-muted) px-4 py-3 text-sm font-semibold leading-relaxed text-(--ink)">
           Sign-up opens closer to the event. Check back soon.
         </p>
       )}
-      <div className="mt-5 border-t border-[color:var(--line)] pt-4">
+      <div className="mt-5 border-t border-(--line) pt-4">
         <AddToCalendar event={event} variant="link" />
       </div>
     </aside>

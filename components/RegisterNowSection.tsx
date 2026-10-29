@@ -25,13 +25,13 @@ export default function RegisterNowSection({
   if (compact) {
     return (
       <div className={`surface-card mb-12 p-6 text-left md:p-8 ${className}`.trim()}>
-        <p className="mb-5 text-sm font-medium uppercase tracking-[0.18em] text-[color:var(--muted)]">
+        <p className="mb-5 text-sm font-medium uppercase tracking-[0.18em] text-(--muted)">
           Register
         </p>
         {hasRegistrationUrl ? (
           <RegisterNowButton href={event.registrationUrl} />
         ) : (
-          <p className="rounded-xl border border-[color:var(--line)] bg-[color:var(--surface-muted)] px-4 py-3 text-sm font-semibold leading-relaxed text-[color:var(--ink)] md:text-base">
+          <p className="rounded-xl border border-(--line) bg-(--surface-muted) px-4 py-3 text-sm font-semibold leading-relaxed text-(--ink) md:text-base">
             Sign-up opens closer to the event. Check back soon.
           </p>
         )}
@@ -45,32 +45,32 @@ export default function RegisterNowSection({
     <section
       className={`surface-card mb-12 overflow-hidden p-6 text-left md:p-8 ${className}`.trim()}
     >
-      <h2 className="mb-4 text-2xl font-black text-[color:var(--ink)] [font-family:var(--font-heading)]">
+      <h2 className="mb-4 text-2xl font-black text-(--ink) [font-family:var(--font-heading)]">
         Register
       </h2>
 
-      <p className="max-w-3xl leading-relaxed text-[color:var(--muted)] md:text-lg">
+      <p className="max-w-3xl leading-relaxed text-(--muted) md:text-lg">
         Would you like to join the SUGNL meetup on {formattedDate}?{" "}
       </p>
 
       {hasRegistrationUrl ? (
         <p>
-          <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-[color:var(--link)] underline underline-offset-2 hover:no-underline">
+          <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-(--link) underline underline-offset-2 hover:no-underline">
             Sign up now
           </a>
         </p>
       ) : (
-        <p className="mt-4 inline-flex rounded-xl border border-[color:var(--line)] bg-[color:var(--surface-muted)] px-4 py-3 text-sm font-semibold text-[color:var(--ink)] md:text-base">
+        <p className="mt-4 inline-flex rounded-xl border border-(--line) bg-(--surface-muted) px-4 py-3 text-sm font-semibold text-(--ink) md:text-base">
           Sign-up opens closer to the event. Check back soon.
         </p>
       )}
 
-      <p className="mt-6 text-lg font-semibold text-[color:var(--ink)]">
+      <p className="mt-6 text-lg font-semibold text-(--ink)">
         The meetup takes place at:
       </p>
 
-      <div className="mt-4 space-y-1 text-[color:var(--muted)]">
-        <p className="text-2xl font-black [font-family:var(--font-heading)] text-[color:var(--ink)]">{venue}</p>
+      <div className="mt-4 space-y-1 text-(--muted)">
+        <p className="text-2xl font-black [font-family:var(--font-heading)] text-(--ink)">{venue}</p>
         {addressLines.map((line) => (
           <p key={line} className="text-lg">
             {line}

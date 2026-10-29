@@ -59,7 +59,7 @@ export default async function RootLayout({
       >
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-[color:var(--button-primary)] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[color:var(--focus-ring)]"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:rounded-md focus:bg-(--button-primary) focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:outline-solid focus:outline-2 focus:outline-offset-2 focus:outline-(--focus-ring)"
         >
           Skip to main content
         </a>
@@ -69,20 +69,20 @@ export default async function RootLayout({
         <SpeedInsights />
         <Analytics />
         <CookieConsentBanner />
-        <footer className="mt-16 border-t border-[color:var(--nav-line)] bg-[color:var(--nav-bg)]">
-          <div className="mx-auto max-w-6xl px-4 py-8 text-center text-sm text-[color:var(--nav-text-muted)]">
+        <footer className="mt-16 border-t border-(--nav-line) bg-(--nav-bg)">
+          <div className="mx-auto max-w-6xl px-4 py-8 text-center text-sm text-(--nav-text-muted)">
             <p>© {new Date().getFullYear()} SUGNL Community. All rights reserved.</p>
             <div className="mt-2 flex justify-center gap-4">
               <Link
                 href="/privacy"
-                className="underline-offset-4 hover:text-[color:var(--nav-text)] hover:underline"
+                className="underline-offset-4 hover:text-(--nav-text) hover:underline"
               >
                 Privacy statement
               </Link>
               <button
                 type="button"
                 data-cc="show-preferencesModal"
-                className="underline-offset-4 hover:text-[color:var(--nav-text)] hover:underline"
+                className="underline-offset-4 hover:text-(--nav-text) hover:underline"
               >
                 Cookie settings
               </button>

@@ -19,7 +19,7 @@ export default function PrivacyPage() {
         sectionClassName="mb-8"
       />
 
-      <div className="surface-card space-y-8 p-6 text-[color:var(--ink)] md:p-8">
+      <div className="surface-card space-y-8 p-6 text-(--ink) md:p-8">
         <section className="space-y-3">
           <h2 className={sectionTitleClassName}>Newsletter</h2>
           <p>

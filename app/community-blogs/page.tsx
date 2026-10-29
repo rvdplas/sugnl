@@ -107,7 +107,7 @@ export default async function BlogPage() {
       {blogPosts.length > 0 ? (
         <BlogContent initialPosts={blogPosts} sources={sources} />
       ) : (
-        <p className="py-12 text-center text-[color:var(--muted)]">
+        <p className="py-12 text-center text-(--muted)">
           No blog posts are available right now. Please check back later.
         </p>
       )}

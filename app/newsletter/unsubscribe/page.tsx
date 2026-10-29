@@ -42,7 +42,7 @@ export default async function NewsletterUnsubscribePage() {
               successText="Your email address has been erased from our list. You're still welcome at every SUGNL event."
               fallback={
                 <>
-                  <p className="mb-4 text-[color:var(--muted)]">
+                  <p className="mb-4 text-(--muted)">
                     Enter your email address and we&apos;ll email you a link to confirm. Using the unsubscribe link in
                     one of our emails skips this step.
                   </p>
@@ -50,9 +50,9 @@ export default async function NewsletterUnsubscribePage() {
                 </>
               }
             />
-            <p className="mt-4 text-sm text-[color:var(--muted)]">
+            <p className="mt-4 text-sm text-(--muted)">
               Changed your mind?{" "}
-              <Link href="/newsletter" className="text-[color:var(--link)] underline-offset-4 hover:underline">
+              <Link href="/newsletter" className="text-(--link) underline-offset-4 hover:underline">
                 Stay subscribed
               </Link>
             </p>

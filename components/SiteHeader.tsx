@@ -41,7 +41,7 @@ export default function SiteHeader() {
     return `rounded-lg px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors ${
       isActive
         ? "bg-white/12 text-white"
-        : "text-[color:var(--nav-text-muted)] hover:bg-white/8 hover:text-white"
+        : "text-(--nav-text-muted) hover:bg-white/8 hover:text-white"
     }`;
   };
 
@@ -80,10 +80,10 @@ export default function SiteHeader() {
   }, []);
 
   return (
-    <nav className="border-b border-[color:var(--nav-line)] bg-[color:var(--nav-bg)] text-[color:var(--nav-text)]">
+    <nav className="border-b border-(--nav-line) bg-(--nav-bg) text-(--nav-text)">
       <div className="mx-auto max-w-6xl px-4 py-4">
         <div className="flex items-center justify-between gap-3">
-          <Link href="/" className="flex min-w-0 flex-shrink items-center">
+          <Link href="/" className="flex min-w-0 shrink items-center">
             <Image
               src="/sugnl-logo.png"
               alt="SUGNL Logo"
@@ -95,7 +95,7 @@ export default function SiteHeader() {
           </Link>
 
           <div className="hidden items-center gap-3 md:flex">
-            <div className="flex items-center gap-1 rounded-full border border-[color:var(--nav-line)] bg-white/[0.03] p-1">
+            <div className="flex items-center gap-1 rounded-full border border-(--nav-line) bg-white/3 p-1">
               {primaryDesktopItems.map((item) => (
                 <Link
                   key={item.href}
@@ -110,7 +110,7 @@ export default function SiteHeader() {
               {secondaryDesktopItems.length > 0 && (
                 <details ref={desktopMoreMenuRef} className="group relative">
                   <summary
-                    className="inline-flex list-none items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-[color:var(--nav-text-muted)] transition-colors hover:bg-white/8 hover:text-white [&::-webkit-details-marker]:hidden"
+                    className="inline-flex list-none items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-(--nav-text-muted) transition-colors hover:bg-white/8 hover:text-white [&::-webkit-details-marker]:hidden"
                     aria-label="Open more navigation links"
                   >
                     More
@@ -130,7 +130,7 @@ export default function SiteHeader() {
                     </svg>
                   </summary>
 
-                  <div className="absolute right-0 z-20 mt-2 min-w-52 rounded-2xl border border-[color:var(--nav-line)] bg-[color:var(--hero-1)] p-2 shadow-lg">
+                  <div className="absolute right-0 z-20 mt-2 min-w-52 rounded-2xl border border-(--nav-line) bg-(--hero-1) p-2 shadow-lg">
                     <div className="flex flex-col">
                       {secondaryDesktopItems.map((item) => (
                         <Link
@@ -155,7 +155,7 @@ export default function SiteHeader() {
             <ThemeToggle />
             <details ref={mobileMenuRef} className="group relative">
               <summary
-                className="inline-flex h-9 w-9 list-none items-center justify-center rounded-full border border-[color:var(--nav-line)] text-[color:var(--nav-text)] transition-opacity hover:opacity-80 [&::-webkit-details-marker]:hidden"
+                className="inline-flex h-9 w-9 list-none items-center justify-center rounded-full border border-(--nav-line) text-(--nav-text) transition-opacity hover:opacity-80 [&::-webkit-details-marker]:hidden"
                 aria-label="Toggle navigation menu"
               >
                 <svg
@@ -186,7 +186,7 @@ export default function SiteHeader() {
                 </svg>
               </summary>
 
-              <div className="absolute right-0 z-20 mt-3 w-[min(84vw,320px)] rounded-2xl border border-[color:var(--nav-line)] bg-[color:var(--hero-1)] p-2 shadow-lg">
+              <div className="absolute right-0 z-20 mt-3 w-[min(84vw,320px)] rounded-2xl border border-(--nav-line) bg-(--hero-1) p-2 shadow-lg">
                 <div className="flex flex-col">
                   {navigationItems.map((item) => (
                     <Link

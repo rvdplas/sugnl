@@ -13,7 +13,7 @@ export default function PageIntro({
   description,
   sectionClassName = "mb-12",
   titleClassName = "mb-4 text-4xl font-black [font-family:var(--font-heading)] md:text-5xl",
-  descriptionClassName = "max-w-2xl text-lg text-[color:var(--muted)]",
+  descriptionClassName = "max-w-2xl text-lg text-(--muted)",
 }: PageIntroProps) {
   return (
     <section className={sectionClassName}>

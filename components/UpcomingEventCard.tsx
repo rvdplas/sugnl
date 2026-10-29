@@ -41,10 +41,10 @@ export default function UpcomingEventCard({ event }: UpcomingEventCardProps) {
           loading="eager"
           className="object-cover object-[75%_center] opacity-30"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[color:var(--surface)] via-[color:var(--surface)]/60 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-r from-(--surface) via-(--surface)/60 to-transparent" />
       </div>
       <div className="relative">
-        <p className="mb-6 text-sm font-semibold uppercase tracking-[0.15em] text-[color:var(--muted)]">
+        <p className="mb-6 text-sm font-semibold uppercase tracking-[0.15em] text-(--muted)">
           Upcoming Event
         </p>
         {event ? (
@@ -55,31 +55,31 @@ export default function UpcomingEventCard({ event }: UpcomingEventCardProps) {
 
           return (
             <div className="grid gap-8 md:grid-cols-[260px_1fr]">
-              <div className="flex flex-col gap-5 md:border-r md:border-[color:var(--line)] md:pr-8">
+              <div className="flex flex-col gap-5 md:border-r md:border-(--line) md:pr-8">
                 <div className="flex items-center gap-4">
-                  <div className="flex w-16 shrink-0 flex-col items-center justify-center rounded-xl border border-[color:var(--line)] bg-[color:var(--surface-muted)] py-2">
-                    <span className="text-xs font-bold uppercase tracking-wide text-[color:var(--link)]">
+                  <div className="flex w-16 shrink-0 flex-col items-center justify-center rounded-xl border border-(--line) bg-(--surface-muted) py-2">
+                    <span className="text-xs font-bold uppercase tracking-wide text-(--link)">
                       {dateBadge.month}
                     </span>
-                    <span className="text-2xl font-black leading-none text-[color:var(--ink)]">{dateBadge.day}</span>
-                    <span className="text-xs text-[color:var(--muted)]">{dateBadge.year}</span>
+                    <span className="text-2xl font-black leading-none text-(--ink)">{dateBadge.day}</span>
+                    <span className="text-xs text-(--muted)">{dateBadge.year}</span>
                   </div>
                   <div>
-                    <p className="font-semibold text-[color:var(--ink)]">
+                    <p className="font-semibold text-(--ink)">
                       🕒 {event.startTime} - {event.endTime}
                     </p>
-                    <p className="mt-1 text-sm text-[color:var(--muted)]">{getWeekday(event.date)}</p>
+                    <p className="mt-1 text-sm text-(--muted)">{getWeekday(event.date)}</p>
                   </div>
                 </div>
 
-                <hr className="border-[color:var(--line)]" />
+                <hr className="border-(--line)" />
 
                 <div className="flex items-start gap-2">
                   <span aria-hidden="true">📍</span>
                   <div>
-                    <p className="font-semibold text-[color:var(--ink)]">{venue}</p>
+                    <p className="font-semibold text-(--ink)">{venue}</p>
                     {addressLines.map((line) => (
-                      <p key={line} className="text-sm text-[color:var(--muted)]">
+                      <p key={line} className="text-sm text-(--muted)">
                         {line}
                       </p>
                     ))}
@@ -88,14 +88,14 @@ export default function UpcomingEventCard({ event }: UpcomingEventCardProps) {
 
                 {event.parking && (
                   <>
-                    <hr className="border-[color:var(--line)]" />
+                    <hr className="border-(--line)" />
                     <div className="flex items-start gap-2">
                       <span aria-hidden="true">🚗</span>
                       <div>
-                        <p className="font-semibold text-[color:var(--ink)]">Coming by car?</p>
-                        <p className="text-sm text-[color:var(--muted)]">Park at the parking garage</p>
+                        <p className="font-semibold text-(--ink)">Coming by car?</p>
+                        <p className="text-sm text-(--muted)">Park at the parking garage</p>
                         {getParkingLines(event.parking).map((line) => (
-                          <p key={line} className="text-sm text-[color:var(--muted)]">
+                          <p key={line} className="text-sm text-(--muted)">
                             {line}
                           </p>
                         ))}
@@ -106,7 +106,7 @@ export default function UpcomingEventCard({ event }: UpcomingEventCardProps) {
               </div>
 
               <div>
-                <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[color:var(--link)]">
+                <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-(--link)">
                   SUGNL Meetup
                 </p>
                 <h2 className="mb-3 text-3xl font-black [font-family:var(--font-heading)] md:text-4xl">
@@ -114,10 +114,10 @@ export default function UpcomingEventCard({ event }: UpcomingEventCardProps) {
                 </h2>
                 <MarkdownContent
                   content={event.description}
-                  className="mb-6 max-w-2xl text-[color:var(--muted)] md:text-lg"
+                  className="mb-6 max-w-2xl text-(--muted) md:text-lg"
                 />
 
-                <div className="mb-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-[color:var(--ink)]">
+                <div className="mb-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-(--ink)">
                   <span className="flex items-center gap-2">🎤 Inspiring talks</span>
                   <span className="flex items-center gap-2">💻 Hands-on workshop</span>
                   <span className="flex items-center gap-2">🥂 Food, drinks and networking</span>
@@ -129,7 +129,7 @@ export default function UpcomingEventCard({ event }: UpcomingEventCardProps) {
                   )}
                   <Link
                     href={`/event/${event.id}`}
-                    className="inline-block rounded-full border border-[color:var(--line)] bg-[color:var(--surface)] px-6 py-3 text-sm font-semibold text-[color:var(--ink)] transition-colors hover:bg-[color:var(--surface-soft)]"
+                    className="inline-block rounded-full border border-(--line) bg-(--surface) px-6 py-3 text-sm font-semibold text-(--ink) transition-colors hover:bg-(--surface-soft)"
                   >
                     View event details
                   </Link>
@@ -143,12 +143,12 @@ export default function UpcomingEventCard({ event }: UpcomingEventCardProps) {
           <h2 className="mb-3 text-3xl font-black [font-family:var(--font-heading)] md:text-4xl">
             New event announcement coming soon
           </h2>
-          <p className="mb-6 text-[color:var(--muted)] md:text-lg">
+          <p className="mb-6 text-(--muted) md:text-lg">
             We are preparing the next SUGNL meetup. Check back shortly or explore our community blogs while you wait.
           </p>
           <Link
             href="/events"
-            className="inline-block rounded-full border border-[color:var(--nav-line)] bg-[color:var(--button-primary)] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[color:var(--button-primary-hover)]"
+            className="inline-block rounded-full border border-(--nav-line) bg-(--button-primary) px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-(--button-primary-hover)"
           >
             View Events
           </Link>

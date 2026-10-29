@@ -46,13 +46,13 @@ export default function NewsletterShowcase({
   return (
     <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-12">
       <div>
-        <p className="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-[color:var(--link)]">SUGNL Newsletter</p>
+        <p className="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-(--link)">SUGNL Newsletter</p>
         <h1 className="mb-4 text-4xl font-black leading-[1.05] [font-family:var(--font-heading)] sm:text-5xl lg:text-6xl">
           {title}
           <br />
           <span className={gradientTextClassName}>{highlight}</span>
         </h1>
-        <p className="mb-8 max-w-xl text-lg leading-relaxed text-[color:var(--muted)]">{description}</p>
+        <p className="mb-8 max-w-xl text-lg leading-relaxed text-(--muted)">{description}</p>
 
         <section className="surface-card p-6 md:p-8">{action}</section>
       </div>
@@ -70,8 +70,8 @@ export default function NewsletterShowcase({
                 <Icon className="h-5 w-5" />
               </span>
               <div>
-                <p className="font-bold text-[color:var(--ink)]">{benefitTitle}</p>
-                <p className="text-sm text-[color:var(--muted)]">{text}</p>
+                <p className="font-bold text-(--ink)">{benefitTitle}</p>
+                <p className="text-sm text-(--muted)">{text}</p>
               </div>
             </li>
           ))}

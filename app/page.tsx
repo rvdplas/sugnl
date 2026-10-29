@@ -28,13 +28,13 @@ export default async function Home() {
             <h2 className="mb-2 text-3xl font-black [font-family:var(--font-heading)] md:text-4xl">
               From our community blogs
             </h2>
-            <p className="text-[color:var(--muted)] md:text-lg">
+            <p className="text-(--muted) md:text-lg">
               Sharp ideas, practical stories, and lessons learned straight from fellow builders in the SUGNL network.
             </p>
           </div>
           <Link
             href="/community-blogs"
-            className="shrink-0 text-sm font-semibold text-[color:var(--link)] hover:underline"
+            className="shrink-0 text-sm font-semibold text-(--link) hover:underline"
           >
             Explore all posts →
           </Link>
@@ -45,9 +45,9 @@ export default async function Home() {
             {communityPosts.map((post) => (
               <article
                 key={post.id}
-                className="rounded-xl border border-[color:var(--line)] bg-[color:var(--surface-soft)] p-4"
+                className="rounded-xl border border-(--line) bg-(--surface-soft) p-4"
               >
-                <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--muted)]">
+                <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-(--muted)">
                   {post.sourceName} ·{" "}
                   {new Date(post.publishedAt).toLocaleDateString("en-US", {
                     year: "numeric",
@@ -55,11 +55,11 @@ export default async function Home() {
                     day: "numeric",
                   })}
                 </p>
-                <h3 className="mb-2 line-clamp-2 text-lg font-bold text-[color:var(--ink)]">
+                <h3 className="mb-2 line-clamp-2 text-lg font-bold text-(--ink)">
                   {post.title}
                 </h3>
                 {post.excerpt && (
-                  <p className="mb-3 line-clamp-3 text-sm leading-relaxed text-[color:var(--muted)]">
+                  <p className="mb-3 line-clamp-3 text-sm leading-relaxed text-(--muted)">
                     {post.excerpt}
                   </p>
                 )}
@@ -67,7 +67,7 @@ export default async function Home() {
                   href={post.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-semibold text-[color:var(--link)] hover:underline"
+                  className="text-sm font-semibold text-(--link) hover:underline"
                 >
                   Read post
                 </a>
@@ -75,7 +75,7 @@ export default async function Home() {
             ))}
           </div>
         ) : (
-          <p className="rounded-xl border border-[color:var(--line)] bg-[color:var(--surface-soft)] p-4 text-sm text-[color:var(--muted)]">
+          <p className="rounded-xl border border-(--line) bg-(--surface-soft) p-4 text-sm text-(--muted)">
             Community posts are loading in. Visit the community blog page for the latest updates.
           </p>
         )}
@@ -83,18 +83,18 @@ export default async function Home() {
 
       {featureFlags.newsletter && (
         <section className="surface-card p-6 md:p-8">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.15em] text-[color:var(--muted)]">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.15em] text-(--muted)">
             Stay In The Loop
           </p>
           <h2 className="mb-3 text-3xl font-black [font-family:var(--font-heading)] md:text-4xl">
             Get meetup invites before they fill up
           </h2>
-          <p className="mb-6 text-[color:var(--muted)] md:text-lg">
+          <p className="mb-6 text-(--muted) md:text-lg">
             Join the SUGNL newsletter for early event announcements, speaker highlights, and practical community updates you can use right away.
           </p>
           <Link
             href="/newsletter"
-            className="inline-block rounded-full border border-[color:var(--nav-line)] bg-[color:var(--button-primary)] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[color:var(--button-primary-hover)]"
+            className="inline-block rounded-full border border-(--nav-line) bg-(--button-primary) px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-(--button-primary-hover)"
           >
             Sign up for newsletter →
           </Link>

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const buttonClassName =
-  "rounded-md bg-[color:var(--button-primary)] px-4 py-2 text-white transition-colors hover:bg-[color:var(--button-primary-hover)]";
+  "rounded-md bg-(--button-primary) px-4 py-2 text-white transition-colors hover:bg-(--button-primary-hover)";
 
 interface AdminPageProps {
   readonly searchParams: Promise<{ error?: string }>;
@@ -30,16 +30,16 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
     const denied = error === "AccessDenied" || Boolean(session);
 
     return (
-      <PageContainer className="md:py-16">
+      <PageContainer className="py-12 md:py-16">
         <PageIntro title="Admin" description="Sign in with an Admin GitHub account to continue." />
-        <section className="surface-card max-w-xl space-y-4 bg-[color:var(--surface-soft)] p-6 md:p-8">
+        <section className="surface-card max-w-xl space-y-4 bg-(--surface-soft) p-6 md:p-8">
           {denied && (
-            <p className="rounded-md bg-[color:var(--error-bg)] p-3 text-[color:var(--error-ink)]">
+            <p className="rounded-md bg-(--error-bg) p-3 text-(--error-ink)">
               This GitHub account is not allowed to use the admin pages.
             </p>
           )}
           {error && !denied && (
-            <p className="rounded-md bg-[color:var(--error-bg)] p-3 text-[color:var(--error-ink)]">
+            <p className="rounded-md bg-(--error-bg) p-3 text-(--error-ink)">
               Signing in failed. Please try again.
             </p>
           )}

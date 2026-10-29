@@ -21,12 +21,12 @@ export default function MarkdownContent({ content, className }: MarkdownContentP
           ol: ({ children }) => <ol className="mb-2 list-decimal pl-5 last:mb-0">{children}</ol>,
           li: ({ children }) => <li className="mb-1 last:mb-0">{children}</li>,
           a: ({ children, href }) => (
-            <a href={href} className="text-[color:var(--link)] underline underline-offset-2 hover:no-underline" target="_blank" rel="noopener noreferrer">
+            <a href={href} className="text-(--link) underline underline-offset-2 hover:no-underline" target="_blank" rel="noopener noreferrer">
               {children}
             </a>
           ),
           code: ({ children }) => (
-            <code className="rounded bg-[color:var(--code-bg)] px-1 py-0.5 text-[0.9em] text-[color:var(--ink)]">{children}</code>
+            <code className="rounded-sm bg-(--code-bg) px-1 py-0.5 text-[0.9em] text-(--ink)">{children}</code>
           ),
         }}
       >
