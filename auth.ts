@@ -28,7 +28,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   session: { strategy: "jwt", maxAge: 8 * 60 * 60 },
-  pages: { signIn: "/admin/newsletter", error: "/admin/newsletter" },
+  pages: { signIn: "/admin", error: "/admin" },
   callbacks: {
     signIn({ account, profile }) {
       return account?.provider === "github" && isAdminGitHubId(profile?.id?.toString());

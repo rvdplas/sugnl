@@ -81,7 +81,7 @@ export default function SiteHeader() {
 
   return (
     <nav className="border-b border-[color:var(--nav-line)] bg-[color:var(--nav-bg)] text-[color:var(--nav-text)]">
-      <div className="mx-auto max-w-7xl px-4 py-4">
+      <div className="mx-auto max-w-6xl px-4 py-4">
         <div className="flex items-center justify-between gap-3">
           <Link href="/" className="flex min-w-0 flex-shrink items-center">
             <Image

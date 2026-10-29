@@ -3,9 +3,12 @@ import Link from "next/link";
 import { Plus_Jakarta_Sans, Sora } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import CookieConsentBanner from "@/components/CookieConsentBanner";
+import SiteBanner from "@/components/SiteBanner";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next"
 import { siteUrl } from "@/lib/siteUrl";
+import { getUpcomingBanners } from "@/lib/siteBanner";
+import { connection } from "next/server";
 import "./globals.css";
 
 const bodyFont = Plus_Jakarta_Sans({
@@ -32,6 +35,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // The CSP nonce is per request; cached HTML carries a stale one and its inline hydration scripts get blocked.
+  await connection();
+  const banners = await getUpcomingBanners();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -48,6 +55,7 @@ export default async function RootLayout({
           Skip to main content
         </a>
         <SiteHeader />
+        <SiteBanner banners={banners} />
         <main id="main" className="min-h-screen">{children}</main>
         <SpeedInsights />
         <Analytics />
