@@ -1,22 +1,38 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
 import type { SiteBanner as SiteBannerData } from "@/lib/siteBanner";
 import { isBannerLive, parseBannerMessage } from "@/lib/bannerInput";
 
 const STORAGE_KEY = "dismissed-banners";
 
-function getDismissedIds(): number[] | null {
+/** The stored ids as text, so repeated reads compare equal; null when storage is blocked (e.g. strict privacy mode). */
+function readDismissed(): string | null {
   try {
-    const ids: unknown = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "[]");
-    return Array.isArray(ids) ? ids.filter(Number.isInteger) : [];
+    return localStorage.getItem(STORAGE_KEY) ?? "[]";
   } catch {
-    // Storage blocked (e.g. strict privacy mode): null hides every closable banner rather than nag on every page.
     return null;
   }
 }
+
+/** null hides every closable banner rather than nag on every page. */
+function parseDismissedIds(stored: string | null): number[] | null {
+  if (stored === null) {
+    return null;
+  }
+
+  try {
+    const ids: unknown = JSON.parse(stored);
+    return Array.isArray(ids) ? ids.filter(Number.isInteger) : [];
+  } catch {
+    return null;
+  }
+}
+
+// Read once after hydration; closing a banner updates closedNow instead.
+const subscribeNever = () => () => {};
 
 interface SiteBannerProps {
   readonly banners: SiteBannerData[];
@@ -24,22 +40,20 @@ interface SiteBannerProps {
 
 export default function SiteBanner({ banners }: SiteBannerProps) {
   const pathname = usePathname();
-  // Empty until mounted so returning visitors never see a flash of a closed banner.
-  const [shownIds, setShownIds] = useState<number[]>([]);
+  // undefined on the server and during hydration, so returning visitors never see a flash of a closed banner.
+  const stored = useSyncExternalStore(subscribeNever, readDismissed, () => undefined);
+  const [closedNow, setClosedNow] = useState<number[]>([]);
+  if (stored === undefined) {
+    return null;
+  }
 
-  useEffect(() => {
-    const dismissed = getDismissedIds();
-    const isClosed = (id: number) => dismissed === null || dismissed.includes(id);
-    setShownIds(
-      banners
-        .filter((banner) => isBannerLive(banner) && (!banner.dismissible || !isClosed(banner.id)))
-        .map((banner) => banner.id),
-    );
-  }, [banners]);
-
+  const dismissed = parseDismissedIds(stored);
+  const isClosed = (id: number) => dismissed === null || dismissed.includes(id) || closedNow.includes(id);
   // A banner pointing to the current page has done its job there.
   const linksHere = (message: string) => parseBannerMessage(message).some((segment) => segment.href === pathname);
-  const shown = banners.filter((banner) => shownIds.includes(banner.id) && !linksHere(banner.message));
+  const shown = banners.filter(
+    (banner) => isBannerLive(banner) && (!banner.dismissible || !isClosed(banner.id)) && !linksHere(banner.message),
+  );
   if (shown.length === 0) {
     return null;
   }
@@ -47,10 +61,10 @@ export default function SiteBanner({ banners }: SiteBannerProps) {
   const dismiss = (id: number) => {
     try {
       // Keep only ids that still exist, so the list never grows past the current banners.
-      const dismissed = (getDismissedIds() ?? []).filter((dismissedId) => banners.some((banner) => banner.id === dismissedId));
-      localStorage.setItem(STORAGE_KEY, JSON.stringify([...dismissed, id]));
+      const kept = (parseDismissedIds(readDismissed()) ?? []).filter((dismissedId) => banners.some((banner) => banner.id === dismissedId));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify([...kept, id]));
     } catch {}
-    setShownIds((ids) => ids.filter((shownId) => shownId !== id));
+    setClosedNow((ids) => [...ids, id]);
   };
 
   return (

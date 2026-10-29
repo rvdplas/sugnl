@@ -23,7 +23,8 @@ export function BlogContent({ initialPosts, sources }: BlogContentProps) {
         onSourcesChange={setSelectedSourceIds}
       />
       <div className="surface-card p-6 md:p-8">
-        <BlogPostList posts={initialPosts} selectedSourceIds={selectedSourceIds} />
+        {/* A new key per filter starts the list again at page 1. */}
+        <BlogPostList key={selectedSourceIds.join()} posts={initialPosts} selectedSourceIds={selectedSourceIds} />
       </div>
     </div>
   );

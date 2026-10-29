@@ -9,6 +9,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { siteUrl } from "@/lib/siteUrl";
 import { getUpcomingBanners } from "@/lib/siteBanner";
 import { connection } from "next/server";
+import { headers } from "next/headers";
 import "./globals.css";
 
 const bodyFont = Plus_Jakarta_Sans({
@@ -20,6 +21,13 @@ const headingFont = Sora({
   subsets: ["latin"],
   variable: "--font-heading",
 });
+
+// Inline and render-blocking on purpose: applies a stored theme before first paint, so it never flashes.
+// Without a stored choice, globals.css follows the system theme.
+const THEME_INIT_SCRIPT = `try {
+  var theme = localStorage.getItem("theme");
+  if (theme === "light" || theme === "dark") document.documentElement.setAttribute("data-theme", theme);
+} catch (_) {}`;
 
 export const metadata: Metadata = {
   title: "SUGNL - Community Events",
@@ -38,11 +46,12 @@ export default async function RootLayout({
   // The CSP nonce is per request; cached HTML carries a stale one and its inline hydration scripts get blocked.
   await connection();
   const banners = await getUpcomingBanners();
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script src="/theme-init.js" />
+        <script nonce={nonce} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
       <body
         className={`${bodyFont.variable} ${headingFont.variable} antialiased`}

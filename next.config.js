@@ -10,6 +10,11 @@ const nextConfig = {
 				protocol: "https",
 				hostname: "images.unsplash.com",
 			},
+			// Dutch MVP photos (app/dutch-mvps); same hosts as img-src in proxy.ts.
+			{ protocol: "https", hostname: "mvp.sitecore.com" },
+			{ protocol: "https", hostname: "mvp.sitecore.net" },
+			{ protocol: "https", hostname: "www.gravatar.com", pathname: "/avatar/**" },
+			{ protocol: "https", hostname: "secure.gravatar.com", pathname: "/avatar/**" },
 		],
 	},
 };
