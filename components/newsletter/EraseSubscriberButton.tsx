@@ -1,6 +1,6 @@
 "use client";
 
-import { eraseSubscriberAction } from "@/app/admin/newsletter/actions";
+import { eraseSubscriberAction } from "@/app/admin/actions";
 
 interface EraseSubscriberButtonProps {
   readonly email: string;

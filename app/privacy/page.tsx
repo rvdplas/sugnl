@@ -53,8 +53,8 @@ export default function PrivacyPage() {
         <section className="space-y-3">
           <h2 className={sectionTitleClassName}>Analytics and cookies</h2>
           <p>
-            We measure visits with Vercel Web Analytics, which does not use cookies. We store your cookie choice and theme
-            preference in your browser. Event pages can show an embedded Google Maps map, which is only loaded after you
+            We measure visits with Vercel Web Analytics, which does not use cookies. We store your cookie choice, theme
+            preference and which announcement banners you closed in your browser. Event pages can show an embedded Google Maps map, which is only loaded after you
             allow embedded content; Google may then set cookies and receive your IP address. You can change your choice at
             any time via &quot;Cookie settings&quot; at the bottom of every page.
           </p>

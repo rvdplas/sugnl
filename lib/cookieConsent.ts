@@ -33,7 +33,7 @@ export const cookieConsentConfig: CookieConsentConfig = {
             {
               title: "Strictly necessary",
               description:
-                "Stores your cookie choice (cc_cookie) and theme preference. Our analytics (Vercel Web Analytics) does not use cookies.",
+                "Stores your cookie choice (cc_cookie), theme preference and which announcement banners you closed. Our analytics (Vercel Web Analytics) does not use cookies.",
               linkedCategory: "necessary",
             },
             {
