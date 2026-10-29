@@ -15,7 +15,7 @@ export default function EventsPage() {
   const pastEvents = getPastEvents();
 
   return (
-    <PageContainer className="max-w-5xl py-14 md:py-16">
+    <PageContainer className="py-14 md:py-16">
       <section className="mb-12 md:mb-14">
         <p className="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-(--link)">Events</p>
         <h1 className="mb-4 max-w-3xl text-4xl font-black leading-tight [font-family:var(--font-heading)] md:text-5xl">

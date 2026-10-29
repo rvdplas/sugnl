@@ -30,7 +30,7 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
     const denied = error === "AccessDenied" || Boolean(session);
 
     return (
-      <PageContainer className="md:py-16">
+      <PageContainer className="py-12 md:py-16">
         <PageIntro title="Admin" description="Sign in with an Admin GitHub account to continue." />
         <section className="surface-card max-w-xl space-y-4 bg-(--surface-soft) p-6 md:p-8">
           {denied && (

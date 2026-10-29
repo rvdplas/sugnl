@@ -35,7 +35,7 @@ export default async function NewsletterAdminPage() {
   ]);
 
   return (
-    <PageContainer className="md:py-16">
+    <PageContainer className="py-12 md:py-16">
       <AdminTabs userName={session.user?.name} />
       <PageIntro
         title="Newsletter"

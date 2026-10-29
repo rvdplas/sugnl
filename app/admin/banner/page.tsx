@@ -90,7 +90,7 @@ export default async function BannerAdminPage({ searchParams }: BannerAdminPageP
   const count = (status?: Status) => (status ? withStatus.filter((item) => item.status === status).length : withStatus.length);
 
   return (
-    <PageContainer className="md:py-16">
+    <PageContainer className="py-12 md:py-16">
       <AdminTabs userName={session.user?.name} />
       <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
         <PageIntro
