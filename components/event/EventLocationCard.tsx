@@ -25,13 +25,13 @@ type LocationEntryProps = {
 function LocationEntry({ label, name, addressLines, mapsQuery, linkLabel, Icon }: LocationEntryProps) {
   return (
     <div>
-      <h3 className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-[color:var(--muted)]">{label}</h3>
+      <h3 className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-(--muted)">{label}</h3>
       <address className="flex items-start gap-3 not-italic">
-        <Icon className="mt-0.5 h-5 w-5 shrink-0 text-[color:var(--link)]" />
+        <Icon className="mt-0.5 h-5 w-5 shrink-0 text-(--link)" />
         <span>
-          <span className="block font-semibold text-[color:var(--ink)]">{name}</span>
+          <span className="block font-semibold text-(--ink)">{name}</span>
           {addressLines.map((line) => (
-            <span key={line} className="block text-sm text-[color:var(--muted)]">
+            <span key={line} className="block text-sm text-(--muted)">
               {line}
             </span>
           ))}
@@ -39,7 +39,7 @@ function LocationEntry({ label, name, addressLines, mapsQuery, linkLabel, Icon }
             href={getMapsSearchUrl(mapsQuery)}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-[color:var(--link)] hover:opacity-80"
+            className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-(--link) hover:opacity-80"
           >
             {linkLabel}
             <ExternalLinkIcon className="h-3.5 w-3.5" />
@@ -76,7 +76,7 @@ export default function EventLocationCard({ event }: EventLocationCardProps) {
           Icon={PinIcon}
         />
         {parking && (
-          <div className="border-t border-[color:var(--line)] pt-5">
+          <div className="border-t border-(--line) pt-5">
             <LocationEntry
               label="Parking"
               name={parkingName}
@@ -89,7 +89,7 @@ export default function EventLocationCard({ event }: EventLocationCardProps) {
         )}
       </div>
 
-      <div className="h-52 overflow-hidden rounded-xl border border-[color:var(--line)] bg-[color:var(--bg-soft)]">
+      <div className="h-52 overflow-hidden rounded-xl border border-(--line) bg-(--bg-soft)">
         <MapEmbed src={embedUrl} title={`Map showing ${venue}`} />
       </div>
     </section>

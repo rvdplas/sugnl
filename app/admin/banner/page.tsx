@@ -26,9 +26,9 @@ function formatDay(day: string): string {
 }
 
 const statusStyles = {
-  Live: "bg-[color:var(--success-bg)] text-[color:var(--success-ink)]",
-  Scheduled: "bg-[color:var(--tag-bg)] text-[color:var(--link)]",
-  Past: "bg-[color:var(--pill-past-bg)] text-[color:var(--pill-past-ink)]",
+  Live: "bg-(--success-bg) text-(--success-ink)",
+  Scheduled: "bg-(--tag-bg) text-(--link)",
+  Past: "bg-(--pill-past-bg) text-(--pill-past-ink)",
 };
 
 type Status = keyof typeof statusStyles;
@@ -112,8 +112,8 @@ export default async function BannerAdminPage({ searchParams }: BannerAdminPageP
               aria-current={isActive ? "page" : undefined}
               className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
                 isActive
-                  ? "border-[color:var(--button-primary)] bg-[color:var(--button-primary)] text-white"
-                  : "border-[color:var(--line)] text-[color:var(--muted)] hover:text-[color:var(--ink)]"
+                  ? "border-(--button-primary) bg-(--button-primary) text-white"
+                  : "border-(--line) text-(--muted) hover:text-(--ink)"
               }`}
             >
               {status ?? "All"} <span className="opacity-70">{count(status)}</span>
@@ -123,19 +123,19 @@ export default async function BannerAdminPage({ searchParams }: BannerAdminPageP
       </nav>
 
       {banners.length === 0 ? (
-        <p className="surface-card bg-[color:var(--surface-soft)] p-6 text-[color:var(--muted)] md:p-8">
+        <p className="surface-card bg-(--surface-soft) p-6 text-(--muted) md:p-8">
           {filter ? `No ${filter.toLowerCase()} banners.` : "No banners yet."}
         </p>
       ) : (
         <ul className="space-y-4">
           {banners.map(({ banner, status }) => {
             return (
-              <li key={banner.id} className="surface-card space-y-3 bg-[color:var(--surface-soft)] p-5 md:p-6">
+              <li key={banner.id} className="surface-card space-y-3 bg-(--surface-soft) p-5 md:p-6">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div className="flex flex-wrap items-center gap-3 text-sm">
                     <span className={`rounded-full px-3 py-1 font-medium ${statusStyles[status]}`}>{status}</span>
-                    <span className="text-[color:var(--muted)]">{describeSchedule(banner)}</span>
-                    {!banner.dismissible && <span className="text-[color:var(--muted)]">· Can&apos;t be closed</span>}
+                    <span className="text-(--muted)">{describeSchedule(banner)}</span>
+                    {!banner.dismissible && <span className="text-(--muted)">· Can&apos;t be closed</span>}
                   </div>
                   <div className="flex items-center gap-4">
                     <BannerEditor banner={banner} />
@@ -144,7 +144,7 @@ export default async function BannerAdminPage({ searchParams }: BannerAdminPageP
                       <button
                         type="submit"
                         aria-label={`Remove banner: ${banner.message}`}
-                        className="text-sm text-[color:var(--error-ink)] underline-offset-4 hover:underline"
+                        className="text-sm text-(--error-ink) underline-offset-4 hover:underline"
                       >
                         Remove
                       </button>

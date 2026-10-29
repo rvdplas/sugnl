@@ -11,12 +11,12 @@ export default function BecomeSpeakerPage() {
   return (
     <PageContainer>
       <PageIntro
-        title="Speak at SUGNL"
+        title="Become a speaker at SUGNL"
         description="SUGNL is a community stage for people who want to share practical, innovative, and sometimes slightly wild ideas with fellow Sitecore professionals. If you have a story, experiment, lesson learned, or fresh perspective that could help the community, we want to hear it."
         sectionClassName="mb-8"
       />
 
-      <div className="surface-card space-y-6 p-6 text-[color:var(--ink)] md:p-8">
+      <div className="surface-card space-y-6 p-6 text-(--ink) md:p-8">
         <p>
           We actively want to create room for new speakers. If you have never presented before, that is not a disadvantage here. In fact, when we review submissions, we give extra weight to strong ideas from people who are not already MVPs. We love experienced speakers too, but we also want to help new voices grow, get on stage, and take that next step.
         </p>
@@ -32,7 +32,7 @@ export default function BecomeSpeakerPage() {
         <div className="pt-2">
           <Link
             href="/organizers"
-            className="inline-flex items-center rounded-full border border-[color:var(--nav-line)] bg-[color:var(--button-primary)] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[color:var(--button-primary-hover)]"
+            className="inline-flex items-center rounded-full border border-(--nav-line) bg-(--button-primary) px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-(--button-primary-hover)"
           >
             Contact the organizers
           </Link>

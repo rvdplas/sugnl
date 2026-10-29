@@ -43,7 +43,7 @@ export default async function EventPage({ params }: PageProps) {
     <PageContainer>
       <Link
         href="/events"
-        className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--link)] hover:opacity-80"
+        className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-(--link) hover:opacity-80"
       >
         <ArrowLeftIcon className="h-4 w-4" />
         Back to Events

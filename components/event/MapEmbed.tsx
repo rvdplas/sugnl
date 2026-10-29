@@ -44,7 +44,7 @@ export default function MapEmbed({ src, title }: MapEmbedProps) {
 
   return (
     <div className="flex h-full flex-col items-center justify-center gap-3 p-4 text-center">
-      <p className="max-w-sm text-sm text-[color:var(--muted)]">
+      <p className="max-w-sm text-sm text-(--muted)">
         This map is provided by Google Maps, which may set cookies.
       </p>
       <div className="flex flex-wrap items-center justify-center gap-3">
@@ -54,7 +54,7 @@ export default function MapEmbed({ src, title }: MapEmbedProps) {
         <button
           type="button"
           onClick={() => CookieConsent.showPreferences()}
-          className="text-sm font-semibold text-[color:var(--link)] hover:opacity-80"
+          className="text-sm font-semibold text-(--link) hover:opacity-80"
         >
           Cookie settings
         </button>

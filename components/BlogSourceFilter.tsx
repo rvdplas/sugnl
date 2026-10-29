@@ -51,8 +51,8 @@ export function BlogSourceFilter({
   const areAllSourcesSelected = selectedSources.size === allSourceIds.length;
 
   return (
-    <div className="mb-6 rounded-lg border border-[color:var(--line)] bg-[color:var(--surface-soft)] p-4">
-      <h2 className="mb-3 text-sm font-semibold tracking-wide text-[color:var(--muted)]">
+    <div className="mb-6 rounded-lg border border-(--line) bg-(--surface-soft) p-4">
+      <h2 className="mb-3 text-sm font-semibold tracking-wide text-(--muted)">
         Filter by Source
       </h2>
       <div className="flex flex-wrap gap-2">
@@ -62,8 +62,8 @@ export function BlogSourceFilter({
           onClick={handleSelectAll}
           className={`rounded-full border px-3 py-1.5 text-sm font-medium transition-colors ${
             areAllSourcesSelected
-              ? "border-[color:var(--accent)] bg-[color:var(--pill-upcoming-bg)] font-semibold text-[color:var(--accent-ink)]"
-              : "border-[color:var(--input-border)] bg-[color:var(--surface)] text-[color:var(--muted)] hover:bg-[color:var(--surface-soft)]"
+              ? "border-(--accent) bg-(--pill-upcoming-bg) font-semibold text-(--accent-ink)"
+              : "border-(--input-border) bg-(--surface) text-(--muted) hover:bg-(--surface-soft)"
           }`}
         >
           All sources ({posts.length})
@@ -81,8 +81,8 @@ export function BlogSourceFilter({
               onClick={() => handleSelectSource(source.id)}
               className={`rounded-full border px-3 py-1.5 text-sm font-medium transition-colors ${
                 isSelected
-                  ? "border-[color:var(--accent)] bg-[color:var(--pill-upcoming-bg)] font-semibold text-[color:var(--accent-ink)]"
-                  : "border-[color:var(--input-border)] bg-[color:var(--surface)] text-[color:var(--muted)] hover:bg-[color:var(--surface-soft)]"
+                  ? "border-(--accent) bg-(--pill-upcoming-bg) font-semibold text-(--accent-ink)"
+                  : "border-(--input-border) bg-(--surface) text-(--muted) hover:bg-(--surface-soft)"
               }`}
             >
               {source.name}

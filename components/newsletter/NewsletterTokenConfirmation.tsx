@@ -105,13 +105,13 @@ export default function NewsletterTokenConfirmation({
       wrap(
         <>
         {endpoint === "/api/newsletter/confirm" && <Confetti />}
-        <span className="pill mb-4 inline-block bg-[color:var(--success-bg)] text-[color:var(--success-ink)]">
+        <span className="pill mb-4 inline-block bg-(--success-bg) text-(--success-ink)">
           Done
         </span>
-        <h2 ref={successHeadingRef} tabIndex={-1} className={`${cardHeadingClassName} mb-2 focus:outline-none`}>
+        <h2 ref={successHeadingRef} tabIndex={-1} className={`${cardHeadingClassName} mb-2 focus:outline-hidden`}>
           {successHeading}
         </h2>
-        <p className="mb-6 text-[color:var(--muted)]">{successText}</p>
+        <p className="mb-6 text-(--muted)">{successText}</p>
         <div className="flex flex-wrap gap-3">
           <Link href="/events" className={primaryButtonClassName}>
             See upcoming events
@@ -138,12 +138,12 @@ export default function NewsletterTokenConfirmation({
         )}
         <div>
           <h2 className={`${cardHeadingClassName} mb-2`}>{heading}</h2>
-          <p className={`${isShowcase ? "" : "mb-6 "}text-[color:var(--muted)]`}>{text}</p>
+          <p className={`${isShowcase ? "" : "mb-6 "}text-(--muted)`}>{text}</p>
         </div>
       </div>
 
       {isMissingToken ? (
-        <p className="rounded-xl bg-[color:var(--error-bg)] p-4 text-sm text-[color:var(--error-ink)]">
+        <p className="rounded-xl bg-(--error-bg) p-4 text-sm text-(--error-ink)">
           This link is incomplete. Please open the full link from the email we sent you.
         </p>
       ) : (
@@ -163,7 +163,7 @@ export default function NewsletterTokenConfirmation({
       )}
 
       {status === "error" && (
-        <p role="alert" className="mt-4 rounded-xl bg-[color:var(--error-bg)] p-4 text-sm text-[color:var(--error-ink)]">
+        <p role="alert" className="mt-4 rounded-xl bg-(--error-bg) p-4 text-sm text-(--error-ink)">
           {errorText}
         </p>
       )}

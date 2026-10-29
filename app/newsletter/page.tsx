@@ -34,9 +34,9 @@ export default async function NewsletterPage() {
               requireConsent
               variant="showcase"
             />
-            <p className="mt-4 text-sm text-[color:var(--muted)]">
+            <p className="mt-4 text-sm text-(--muted)">
               We&apos;ll email you a link to confirm. Changed your mind?{" "}
-              <Link href="/newsletter/unsubscribe" className="text-[color:var(--link)] underline-offset-4 hover:underline">
+              <Link href="/newsletter/unsubscribe" className="text-(--link) underline-offset-4 hover:underline">
                 Unsubscribe
               </Link>
             </p>

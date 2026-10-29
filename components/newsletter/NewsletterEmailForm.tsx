@@ -16,7 +16,7 @@ interface NewsletterEmailFormProps {
 }
 
 const inputClassName =
-  "w-full rounded-xl border border-[color:var(--input-border)] bg-[color:var(--surface-soft)] px-4 py-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--focus-ring)]";
+  "w-full rounded-xl border border-(--input-border) bg-(--surface-soft) px-4 py-3 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus-ring)";
 
 export default function NewsletterEmailForm({
   endpoint,
@@ -77,7 +77,7 @@ export default function NewsletterEmailForm({
   return (
     <div>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <p className="text-sm text-[color:var(--muted)]">All fields are required.</p>
+        <p className="text-sm text-(--muted)">All fields are required.</p>
         <div className="hidden" aria-hidden="true">
           <label htmlFor="newsletter-website">Website</label>
           <input
@@ -90,7 +90,7 @@ export default function NewsletterEmailForm({
           />
         </div>
         <div>
-          <label htmlFor="newsletter-email" className="mb-1 block text-sm font-medium text-[color:var(--ink)]">
+          <label htmlFor="newsletter-email" className="mb-1 block text-sm font-medium text-(--ink)">
             Email
           </label>
           <input
@@ -115,7 +115,7 @@ export default function NewsletterEmailForm({
               required
               className="mt-1 h-4 w-4"
             />
-            <label htmlFor="newsletter-consent" className="text-sm text-[color:var(--muted)]">
+            <label htmlFor="newsletter-consent" className="text-sm text-(--muted)">
               I agree to receive the SUGNL newsletter by email and have read the{" "}
               <Link href="/privacy" className="underline underline-offset-4">
                 privacy statement
@@ -143,8 +143,8 @@ export default function NewsletterEmailForm({
             role={message.type === "error" ? "alert" : undefined}
             className={`mt-4 rounded-xl p-4 text-sm ${
               message.type === "success"
-                ? "bg-[color:var(--success-bg)] text-[color:var(--success-ink)]"
-                : "bg-[color:var(--error-bg)] text-[color:var(--error-ink)]"
+                ? "bg-(--success-bg) text-(--success-ink)"
+                : "bg-(--error-bg) text-(--error-ink)"
             }`}
           >
             {message.text}

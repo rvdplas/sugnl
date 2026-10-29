@@ -28,13 +28,13 @@ export default function EventOverviewCard({ event, status }: EventOverviewCardPr
   const { venue, addressLines } = parseLocation(event.location);
 
   return (
-    <article className={`${cardClassName} transition duration-200 hover:border-[color:var(--focus-ring)] hover:shadow-[0_16px_40px_-24px_var(--focus-ring)]`}>
+    <article className={`${cardClassName} transition duration-200 hover:border-(--focus-ring) hover:shadow-[0_16px_40px_-24px_var(--focus-ring)]`}>
       <div className="mb-3 flex items-center justify-between gap-4">
         <span
           className={`pill ${
             isUpcoming
-              ? "bg-[color:var(--pill-upcoming-bg)] text-[color:var(--accent-ink)]"
-              : "bg-[color:var(--pill-past-bg)] text-[color:var(--pill-past-ink)]"
+              ? "bg-(--pill-upcoming-bg) text-(--accent-ink)"
+              : "bg-(--pill-past-bg) text-(--pill-past-ink)"
           }`}
         >
           {isUpcoming ? "Upcoming" : "Past"}
@@ -44,41 +44,41 @@ export default function EventOverviewCard({ event, status }: EventOverviewCardPr
       <h3 className="mb-4 text-2xl font-black [font-family:var(--font-heading)]">{event.title}</h3>
 
       <dl className="grid gap-4 text-sm sm:grid-cols-2 lg:grid-cols-[1fr_1.3fr]">
-        <div className="grid content-start gap-2 sm:border-r sm:border-[color:var(--line)] sm:pr-4 lg:pr-6">
+        <div className="grid content-start gap-2 sm:border-r sm:border-(--line) sm:pr-4 lg:pr-6">
           <div className="flex items-start gap-3">
-            <CalendarIcon className="mt-0.5 h-5 w-5 shrink-0 text-[color:var(--link)]" />
+            <CalendarIcon className="mt-0.5 h-5 w-5 shrink-0 text-(--link)" />
             <div>
               <dt className="sr-only">Date</dt>
-              <dd className="font-semibold text-[color:var(--ink)]">{formatEventDate(event.date)}</dd>
+              <dd className="font-semibold text-(--ink)">{formatEventDate(event.date)}</dd>
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <ClockIcon className="mt-0.5 h-5 w-5 shrink-0 text-[color:var(--link)]" />
+            <ClockIcon className="mt-0.5 h-5 w-5 shrink-0 text-(--link)" />
             <div>
               <dt className="sr-only">Time</dt>
-              <dd className="font-semibold text-[color:var(--ink)]">
+              <dd className="font-semibold text-(--ink)">
                 {event.startTime} - {event.endTime}
               </dd>
             </div>
           </div>
         </div>
         <div className="flex items-start gap-3 sm:pl-4 lg:pl-6">
-          <PinIcon className="mt-0.5 h-5 w-5 shrink-0 text-[color:var(--link)]" />
+          <PinIcon className="mt-0.5 h-5 w-5 shrink-0 text-(--link)" />
           <div>
             <dt className="sr-only">Location</dt>
-            <dd className="font-semibold text-[color:var(--ink)]">{venue}</dd>
+            <dd className="font-semibold text-(--ink)">{venue}</dd>
             {addressLines.map((line) => (
-              <dd key={line} className="text-[color:var(--muted)]">{line}</dd>
+              <dd key={line} className="text-(--muted)">{line}</dd>
             ))}
           </div>
         </div>
       </dl>
 
-      <div className="my-5 border-t border-[color:var(--line)]" />
+      <div className="my-5 border-t border-(--line)" />
 
       <MarkdownContent
         content={event.summary?.trim() || event.description}
-        className="mb-5 line-clamp-4 max-w-4xl text-sm leading-relaxed text-[color:var(--muted)] md:text-base"
+        className="mb-5 line-clamp-4 max-w-4xl text-sm leading-relaxed text-(--muted) md:text-base"
       />
 
       <div className="flex flex-wrap gap-3">

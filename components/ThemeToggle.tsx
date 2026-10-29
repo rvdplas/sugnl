@@ -55,9 +55,9 @@ export default function ThemeToggle({ className = "", showLabel = false }: Theme
       onClick={toggleTheme}
       className={`${
         showLabel
-          ? "inline-flex min-h-11 w-full items-center justify-between rounded-xl border border-[color:var(--nav-line)] px-4 py-3 text-sm font-medium"
-          : "inline-flex h-9 w-9 items-center justify-center rounded-full border border-[color:var(--nav-line)]"
-      } text-[color:var(--nav-text)] transition-opacity hover:opacity-80 ${className}`.trim()}
+          ? "inline-flex min-h-11 w-full items-center justify-between rounded-xl border border-(--nav-line) px-4 py-3 text-sm font-medium"
+          : "inline-flex h-9 w-9 items-center justify-center rounded-full border border-(--nav-line)"
+      } text-(--nav-text) transition-opacity hover:opacity-80 ${className}`.trim()}
       aria-label={mounted ? `Switch to ${theme === "light" ? "dark" : "light"} theme` : "Toggle theme"}
       title={mounted ? `Switch to ${theme === "light" ? "dark" : "light"} theme` : "Toggle theme"}
       suppressHydrationWarning
@@ -88,7 +88,7 @@ export default function ThemeToggle({ className = "", showLabel = false }: Theme
         {showLabel && <span>Theme</span>}
       </span>
       {showLabel && mounted && (
-        <span className="text-[color:var(--nav-text-muted)]">
+        <span className="text-(--nav-text-muted)">
           {theme === "light" ? "Dark" : "Light"}
         </span>
       )}

@@ -26,17 +26,17 @@ export default function EventAbout({ body, highlights = defaultHighlights }: Eve
       <h2 id="about-event" className={`${cardHeadingClassName} mb-4`}>
         About this event
       </h2>
-      {body && <MarkdownContent content={body} className="mb-6 space-y-3 leading-relaxed text-[color:var(--muted)]" />}
+      {body && <MarkdownContent content={body} className="mb-6 space-y-3 leading-relaxed text-(--muted)" />}
 
       <ul className="grid gap-4 sm:grid-cols-3">
         {highlights.map(({ title, description, Icon }) => (
           <li key={title} className="flex items-start gap-3">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[color:var(--line)] bg-[color:var(--surface-muted)] text-[color:var(--link)]">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-(--line) bg-(--surface-muted) text-(--link)">
               <Icon className="h-5 w-5" />
             </span>
             <div>
-              <p className="text-sm font-semibold text-[color:var(--ink)]">{title}</p>
-              <p className="text-xs leading-relaxed text-[color:var(--muted)]">{description}</p>
+              <p className="text-sm font-semibold text-(--ink)">{title}</p>
+              <p className="text-xs leading-relaxed text-(--muted)">{description}</p>
             </div>
           </li>
         ))}

@@ -7,10 +7,10 @@ import { getVisibleText, MAX_MESSAGE_LENGTH, MAX_MESSAGE_SOURCE_LENGTH } from "@
 import type { SiteBanner } from "@/lib/siteBanner";
 
 const buttonClassName =
-  "rounded-md bg-[color:var(--button-primary)] px-4 py-2 text-white transition-colors hover:bg-[color:var(--button-primary-hover)] disabled:cursor-not-allowed disabled:bg-[color:var(--button-primary-disabled)]";
+  "rounded-md bg-(--button-primary) px-4 py-2 text-white transition-colors hover:bg-(--button-primary-hover) disabled:cursor-not-allowed disabled:bg-(--button-primary-disabled)";
 
 const inputClassName =
-  "w-full rounded-md border border-[color:var(--input-border)] bg-transparent px-3 py-2 text-base focus-visible:outline focus-visible:outline-2 focus-visible:outline-[color:var(--focus-ring)]";
+  "w-full rounded-md border border-(--input-border) bg-transparent px-3 py-2 text-base focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-(--focus-ring)";
 
 const emptyFields = { message: "", startsOn: "", endsOn: "", dismissible: true };
 
@@ -78,7 +78,7 @@ export default function BannerEditor({ banner }: BannerEditorProps) {
           type="button"
           onClick={open}
           aria-label={`Edit banner: ${banner.message}`}
-          className="text-sm text-[color:var(--link)] underline-offset-4 hover:underline"
+          className="text-sm text-(--link) underline-offset-4 hover:underline"
         >
           Edit
         </button>
@@ -93,7 +93,7 @@ export default function BannerEditor({ banner }: BannerEditorProps) {
         aria-labelledby={titleId}
         // A click on the backdrop lands on the dialog element itself.
         onClick={(event) => event.target === dialogRef.current && dialogRef.current.close()}
-        className="w-[min(92vw,44rem)] rounded-2xl border border-[color:var(--line)] bg-[color:var(--surface)] p-0 text-[color:var(--ink)] backdrop:bg-black/60"
+        className="w-[min(92vw,44rem)] rounded-2xl border border-(--line) bg-(--surface) p-0 text-(--ink) backdrop:bg-black/60"
       >
         <form action={publish} className="space-y-5 p-6 md:p-8">
           {banner && <input type="hidden" name="id" value={banner.id} />}
@@ -105,7 +105,7 @@ export default function BannerEditor({ banner }: BannerEditorProps) {
               type="button"
               onClick={() => dialogRef.current?.close()}
               aria-label="Close"
-              className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[color:var(--muted)] hover:text-[color:var(--ink)]"
+              className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-(--muted) hover:text-(--ink)"
             >
               <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden="true">
                 <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
@@ -116,7 +116,7 @@ export default function BannerEditor({ banner }: BannerEditorProps) {
           <div className="grid gap-1 text-sm">
             <div className="flex items-end justify-between gap-3">
               <label htmlFor={`${titleId}-message`}>Message</label>
-              <span className="text-[color:var(--muted)]">
+              <span className="text-(--muted)">
                 {getVisibleText(fields.message).length}/{MAX_MESSAGE_LENGTH}
               </span>
             </div>
@@ -136,13 +136,13 @@ export default function BannerEditor({ banner }: BannerEditorProps) {
               className={`${inputClassName} resize-y`}
             />
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <p id={`${titleId}-message-hint`} className="text-[color:var(--muted)]">
+              <p id={`${titleId}-message-hint`} className="text-(--muted)">
                 Links: <code>[link text](/page)</code> or <code>[link text](https://…)</code>
               </p>
               <button
                 type="button"
                 onClick={insertLink}
-                className="text-[color:var(--link)] underline-offset-4 hover:underline"
+                className="text-(--link) underline-offset-4 hover:underline"
               >
                 Insert link
               </button>
@@ -150,7 +150,7 @@ export default function BannerEditor({ banner }: BannerEditorProps) {
           </div>
 
           <fieldset className="grid gap-3 md:grid-cols-2">
-            <legend className="mb-1 text-sm text-[color:var(--muted)]">
+            <legend className="mb-1 text-sm text-(--muted)">
               Dates (optional, Dutch days): shows from the start of the first day through the end of the last. No start
               shows it right away, no end keeps it until you remove it.
             </legend>
@@ -177,18 +177,18 @@ export default function BannerEditor({ banner }: BannerEditorProps) {
               name="dismissible"
               checked={fields.dismissible}
               onChange={(event) => setFields({ ...fields, dismissible: event.target.checked })}
-              className="mt-0.5 h-4 w-4 accent-[color:var(--button-primary)]"
+              className="mt-0.5 h-4 w-4 accent-(--button-primary)"
             />
             <span>
               Visitors can close this banner
-              <span className="block text-[color:var(--muted)]">
+              <span className="block text-(--muted)">
                 Turn off for announcements everyone must keep seeing until the end date.
               </span>
             </span>
           </label>
 
           <div className="space-y-2">
-            <p className="text-sm text-[color:var(--muted)]">Preview</p>
+            <p className="text-sm text-(--muted)">Preview</p>
             {/* inert: the preview's link and close button must not do anything. */}
             <div inert className="overflow-hidden rounded-lg">
               <BannerBar
@@ -201,13 +201,13 @@ export default function BannerEditor({ banner }: BannerEditorProps) {
           </div>
 
           {error && (
-            <p role="alert" className="rounded-md bg-[color:var(--error-bg)] p-3 text-sm text-[color:var(--error-ink)]">
+            <p role="alert" className="rounded-md bg-(--error-bg) p-3 text-sm text-(--error-ink)">
               {error}
             </p>
           )}
 
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <p className="text-sm text-[color:var(--muted)]">
+            <p className="text-sm text-(--muted)">
               {banner
                 ? "Visitors who closed this banner will not see it again. Create a new banner to reach them."
                 : "Shows next to any other live banners."}
@@ -216,7 +216,7 @@ export default function BannerEditor({ banner }: BannerEditorProps) {
               <button
                 type="button"
                 onClick={() => dialogRef.current?.close()}
-                className="rounded-md px-4 py-2 text-[color:var(--muted)] hover:text-[color:var(--ink)]"
+                className="rounded-md px-4 py-2 text-(--muted) hover:text-(--ink)"
               >
                 Cancel
               </button>

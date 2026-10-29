@@ -57,10 +57,10 @@ export default async function DutchMvpsPage({ searchParams }: PageProps) {
       key={availableYear}
       href={`/dutch-mvps?year=${availableYear}`}
       aria-current={availableYear === year ? "page" : undefined}
-      className={`pill border border-[color:var(--line)] ${
+      className={`pill border border-(--line) ${
         availableYear === year
-          ? "bg-[color:var(--pill-upcoming-bg)] text-[color:var(--accent-ink)]"
-          : "bg-[color:var(--surface)] text-[color:var(--ink)]"
+          ? "bg-(--pill-upcoming-bg) text-(--accent-ink)"
+          : "bg-(--surface) text-(--ink)"
       }`}
     >
       {availableYear}
@@ -78,10 +78,10 @@ export default async function DutchMvpsPage({ searchParams }: PageProps) {
       <section className="surface-card mb-8 p-5 md:p-6">
         <div className="flex flex-col gap-5">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--muted)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-(--muted)">
               Year filter
             </p>
-            <p className="mt-1 text-sm text-[color:var(--ink)]">
+            <p className="mt-1 text-sm text-(--ink)">
               Showing Netherlands MVPs for <span className="font-bold">{year}</span>
             </p>
           </div>
@@ -96,7 +96,7 @@ export default async function DutchMvpsPage({ searchParams }: PageProps) {
             href={sourceUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-semibold text-[color:var(--link)] hover:underline"
+            className="text-sm font-semibold text-(--link) hover:underline"
           >
             View source on mvp.sitecore.com →
           </a>
@@ -104,11 +104,11 @@ export default async function DutchMvpsPage({ searchParams }: PageProps) {
       </section>
 
       {loadError ? (
-        <p className="surface-card p-6 text-center text-[color:var(--muted)]">
+        <p className="surface-card p-6 text-center text-(--muted)">
           Unable to load the MVP list right now. Please try again later or use the source link above.
         </p>
       ) : mvps.length === 0 ? (
-        <p className="surface-card p-6 text-center text-[color:var(--muted)]">
+        <p className="surface-card p-6 text-center text-(--muted)">
           No Dutch MVPs were found for {year}.
         </p>
       ) : (
@@ -128,11 +128,11 @@ export default async function DutchMvpsPage({ searchParams }: PageProps) {
                 height={96}
                 className="mb-4 h-24 w-24 rounded-full object-cover"
               />
-              <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-[color:var(--muted)]">
+              <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-(--muted)">
                 {mvp.type}
               </p>
-              <h2 className="text-xl font-bold text-[color:var(--ink)]">{mvp.name}</h2>
-              <p className="mt-3 text-sm text-[color:var(--link)]">Open profile →</p>
+              <h2 className="text-xl font-bold text-(--ink)">{mvp.name}</h2>
+              <p className="mt-3 text-sm text-(--link)">Open profile →</p>
             </a>
           ))}
         </section>
