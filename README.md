@@ -158,7 +158,7 @@ No environment variables are required for basic functionality. See [.env.example
 
 The newsletter mailing list is self-hosted (see [GLOSSARY.md](GLOSSARY.md) and [docs/adr](docs/adr)). To enable it:
 
-1. Create a Neon Postgres database in an EU region and run the scripts in [db/migrations](db/migrations) against it, in order. Set `DATABASE_URL`.
+1. Create a Neon Postgres database in an EU region and create the role `sugnl_app` with SQL (see [0003_app_role.sql](db/migrations/0003_app_role.sql)). Run the scripts in [db/migrations](db/migrations) against it as the database owner, in order. Set `DATABASE_URL` to a connection string for `sugnl_app`, never the owner.
 2. Create a dedicated mailbox (e.g. `newsletter@sugnl.net`) and set the `SMTP_*` variables.
 3. Register a GitHub OAuth App with callback URL `https://<your-domain>/api/auth/callback/github`. Set `AUTH_SECRET`, `AUTH_GITHUB_ID`, `AUTH_GITHUB_SECRET` and the Admins' numeric GitHub IDs in `ADMIN_GITHUB_IDS`.
 4. Set `CRON_SECRET` so the daily cleanup job in [vercel.json](vercel.json) can run.
