@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 type ThemeToggleProps = {
   className?: string;
@@ -10,32 +10,43 @@ type ThemeToggleProps = {
 type Theme = "light" | "dark";
 
 const STORAGE_KEY = "theme";
+const THEME_CHANGE_EVENT = "themechange";
+const darkSchemeQuery = "(prefers-color-scheme: dark)";
 
-function getSystemTheme(): Theme {
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+// data-theme holds an explicit choice (set before paint by the script in app/layout.tsx); otherwise the system theme applies.
+function getTheme(): Theme {
+  const chosen = document.documentElement.getAttribute("data-theme");
+  if (chosen === "light" || chosen === "dark") {
+    return chosen;
+  }
+
+  return window.matchMedia(darkSchemeQuery).matches ? "dark" : "light";
 }
 
-function getStoredTheme(): Theme | null {
-  const stored = localStorage.getItem(STORAGE_KEY);
-  return stored === "light" || stored === "dark" ? stored : null;
+function subscribe(onChange: () => void) {
+  const media = window.matchMedia(darkSchemeQuery);
+  media.addEventListener("change", onChange);
+  window.addEventListener(THEME_CHANGE_EVENT, onChange);
+  return () => {
+    media.removeEventListener("change", onChange);
+    window.removeEventListener(THEME_CHANGE_EVENT, onChange);
+  };
 }
 
 export default function ThemeToggle({ className = "", showLabel = false }: ThemeToggleProps) {
-  const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState<Theme>("light");
-
-  useEffect(() => {
-    const initialTheme = getStoredTheme() ?? getSystemTheme();
-    document.documentElement.setAttribute("data-theme", initialTheme);
-    setTheme(initialTheme);
-    setMounted(true);
-  }, []);
+  // null on the server and during hydration, so the first client render matches the server HTML.
+  const theme = useSyncExternalStore<Theme | null>(subscribe, getTheme, () => null);
+  const mounted = theme !== null;
 
   const toggleTheme = () => {
     const nextTheme: Theme = theme === "light" ? "dark" : "light";
     document.documentElement.setAttribute("data-theme", nextTheme);
-    localStorage.setItem(STORAGE_KEY, nextTheme);
-    setTheme(nextTheme);
+    try {
+      localStorage.setItem(STORAGE_KEY, nextTheme);
+    } catch {
+      // Storage blocked: the choice still applies until the page reloads.
+    }
+    window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
   };
 
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BlogPost } from "@/types";
 
 interface BlogPostListProps {
@@ -18,16 +18,6 @@ export function BlogPostList({ posts, selectedSourceIds }: BlogPostListProps) {
   );
 
   const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
-
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [selectedSourceIds]);
-
-  useEffect(() => {
-    if (currentPage > totalPages) {
-      setCurrentPage(totalPages);
-    }
-  }, [currentPage, totalPages]);
 
   const pageStart = (currentPage - 1) * POSTS_PER_PAGE;
   const pagePosts = filteredPosts.slice(pageStart, pageStart + POSTS_PER_PAGE);

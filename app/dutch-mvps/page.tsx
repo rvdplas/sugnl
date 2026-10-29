@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getDutchMvpDirectoryUrl, getDutchMvpsForYear } from "@/lib/sitecoreMvps";
 import PageIntro from "@/components/PageIntro";
@@ -120,11 +121,11 @@ export default async function DutchMvpsPage({ searchParams }: PageProps) {
               rel="noopener noreferrer"
               className="surface-card block p-5 transition-transform duration-200 hover:-translate-y-0.5"
             >
-              <img
+              <Image
                 src={mvp.photoUrl}
                 alt=""
-                loading="lazy"
-                decoding="async"
+                width={96}
+                height={96}
                 className="mb-4 h-24 w-24 rounded-full object-cover"
               />
               <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-[color:var(--muted)]">

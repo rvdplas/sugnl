@@ -1,3 +1,4 @@
+import Image from "next/image";
 import PageIntro from "@/components/PageIntro";
 import PageContainer from "@/components/PageContainer";
 import type { Metadata } from "next";
@@ -38,9 +39,11 @@ export default function OrganizersPage() {
             key={organizer.name}
             className="surface-card overflow-hidden p-6 text-center"
           >
-            <img
+            <Image
               src={organizer.image}
               alt=""
+              width={128}
+              height={128}
               className="mx-auto mb-4 h-32 w-32 rounded-full object-cover"
             />
             <h2 className="mb-3 text-xl font-bold text-[color:var(--ink)]">

@@ -28,7 +28,7 @@ export default async function Home() {
             <h2 className="mb-2 text-3xl font-black [font-family:var(--font-heading)] md:text-4xl">
               From our community blogs
             </h2>
-            <p className="max-w-2xl text-[color:var(--muted)] md:text-lg">
+            <p className="text-[color:var(--muted)] md:text-lg">
               Sharp ideas, practical stories, and lessons learned straight from fellow builders in the SUGNL network.
             </p>
           </div>
@@ -89,7 +89,7 @@ export default async function Home() {
           <h2 className="mb-3 text-3xl font-black [font-family:var(--font-heading)] md:text-4xl">
             Get meetup invites before they fill up
           </h2>
-          <p className="mb-6 max-w-2xl text-[color:var(--muted)] md:text-lg">
+          <p className="mb-6 text-[color:var(--muted)] md:text-lg">
             Join the SUGNL newsletter for early event announcements, speaker highlights, and practical community updates you can use right away.
           </p>
           <Link
