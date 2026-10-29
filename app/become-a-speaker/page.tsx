@@ -1,5 +1,4 @@
 import Link from "next/link";
-import SpeakerSignupForm from "@/components/SpeakerSignupForm";
 import PageIntro from "@/components/PageIntro";
 import PageContainer from "@/components/PageContainer";
 import type { Metadata } from "next";
@@ -39,8 +38,6 @@ export default function BecomeSpeakerPage() {
           </Link>
         </div>
       </div>
-
-      {/* <SpeakerSignupForm /> */}
     </PageContainer>
   );
 }
