@@ -15,6 +15,7 @@ A simple, cost-effective community events website built with Next.js, TypeScript
 - **Framework**: Next.js 16 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
+- **Database**: [Neon](https://neon.com) Postgres in the EU (Frankfurt), connected through the Vercel Marketplace. It holds the newsletter list and the site banners; see [ADR 0001](docs/adr/0001-self-hosted-newsletter-list-in-eu-postgres.md)
 - **Deployment**: Vercel
 - **Runtime**: Node.js
 
@@ -172,13 +173,11 @@ This site is designed to run cheaply on Vercel's free tier:
 
 - ✅ Uses static generation where possible
 - ✅ Minimal API routes
-- ✅ No external dependencies
 - ✅ Lightweight styling with Tailwind
 - ✅ Optimized images (when added)
 
 ## Future Enhancements
 
-- [ ] Connect to a database (e.g., Vercel Postgres, Supabase)
 - [ ] Admin panel for managing events
 - [ ] Calendar integration (iCal/Google Calendar)
 - [ ] Social sharing features
@@ -209,11 +208,10 @@ To add more sources, append entries to the `blogSources` array in [lib/blogFeeds
 
 For production use, consider:
 
-1. **Database**: Replace the in-memory data with a real database
-2. **Email Service**: Add email notifications (Resend, SendGrid)
-3. **Analytics**: Add Google Analytics or Vercel Analytics
-4. **SEO**: Add proper meta tags and structured data
-5. **Error Tracking**: Add Sentry or similar service
+1. **Email Service**: Add email notifications (Resend, SendGrid)
+2. **Analytics**: Add Google Analytics or Vercel Analytics
+3. **SEO**: Add proper meta tags and structured data
+4. **Error Tracking**: Add Sentry or similar service
 
 ## License
 
