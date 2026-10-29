@@ -141,7 +141,7 @@ export default function UpcomingEventCard({ event }: UpcomingEventCardProps) {
       ) : (
         <>
           <h2 className="mb-3 text-3xl font-black [font-family:var(--font-heading)] md:text-4xl">
-            New Event Announcement Coming Soon
+            New event announcement coming soon
           </h2>
           <p className="mb-6 max-w-2xl text-[color:var(--muted)] md:text-lg">
             We are preparing the next SUGNL meetup. Check back shortly or explore our community blogs while you wait.
