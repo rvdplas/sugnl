@@ -42,5 +42,8 @@
     "@auth/core": {
       "nodemailer": "$nodemailer"
     }
+  },
+  "allowScripts": {
+    "unrs-resolver": false
   }
 }
